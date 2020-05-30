@@ -1,0 +1,74 @@
+{
+  "name": "vue-file-toolbar-menu",
+  "version": "1.0.0",
+  "description": "UI file/toolbar menus for Vue apps",
+  "author": {
+    "name": "Romain Lamothe",
+    "url": "http://www.motla.fr/"
+  },
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "menu",
+    "bar",
+    "toolbar",
+    "file",
+    "document",
+    "text",
+    "application",
+    "dropdown"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/motla/vue-file-toolbar-menu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/motla/vue-file-toolbar-menu/issues"
+  },
+  "homepage": "https://github.com/motla/vue-file-toolbar-menu",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --dest docs & vue-cli-service build --target lib --name vue-file-toolbar-menu src/Bar/Bar.vue",
+    "lint": "vue-cli-service lint"
+  },
+  "main": "src/Bar/Bar.vue",
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "hotkeys-js": "^3.8.1",
+    "material-design-icons": "^3.0.1",
+    "node-emoji": "^1.10.0",
+    "vue": "^2.6.11",
+    "vue-color": "^2.7.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
