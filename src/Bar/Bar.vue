@@ -16,7 +16,7 @@ import BarButtonGeneric from './BarButtonGeneric.vue'
 import BarButtonColor from './BarButtonColor.vue'
 import BarSeparator from './BarSeparator.vue'
 
-import '../../node_modules/material-design-icons/iconfont/material-icons.css'
+import 'material-design-icons/iconfont/material-icons.css'
 
 
 export default {
