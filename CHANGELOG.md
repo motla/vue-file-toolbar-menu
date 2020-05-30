@@ -1,3 +1,7 @@
+## v1.0.3
+
+- Minor documentation update
+
 ## v1.0.2
 
 - Hide icon names until icon font is loaded
