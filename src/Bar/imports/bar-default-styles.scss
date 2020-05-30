@@ -73,10 +73,12 @@
       padding: var(--bar-button-label-padding, 0 3px);
     }
     & > .icon, > .emoji {
+      font-display: block;
       font-size: var(--bar-button-icon-size, 24px);
       margin: var(--bar-button-icon-margin);
     }
     & > .chevron {
+      font-display: block;
       margin: var(--bar-button-chevron-margin, 0 -5px 0 0);
     }
     & > .menu {
@@ -156,10 +158,12 @@
           flex-grow: 1;
         }
         & > .icon, > .emoji {
+          font-display: block;
           font-size: var(--bar-menu-item-icon-size, 24px);
           margin: var(--bar-menu-item-icon-margin, 0 10px 0 0);
         }
         & > .chevron {
+          font-display: block;
           margin: var(--bar-menu-item-chevron-margin, 0 -6px 0 0);
         }
         & > .menu {
