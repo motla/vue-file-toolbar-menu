@@ -1,16 +1,17 @@
 <div align="center">
   <img width="305" height="25" src="img/logo.png" alt="vue-file-toolbar-menu">
-  <br>
+</div>
+<div align="center">
   <img src="img/preview.png">
 </div>
 
 ## Features
 ### :rocket: [See live demo](https://motla.github.io/vue-file-toolbar-menu)
 - Reactive content using Vue.js
+- Add your own button or menu components
 - [Material Icons](https://material.io/resources/icons/)
 - Hotkey support
-- Touch-device compatibile
-- Add your own button or menu components
+- Touch-device compatible
 - Easy multi-language implementation by using [vue-i18n](https://github.com/kazupon/vue-i18n)
 
 ## Installation
