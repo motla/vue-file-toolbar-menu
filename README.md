@@ -1,7 +1,7 @@
 <div align="center">
   <img width="305" height="25" src="img/logo.png" alt="vue-file-toolbar-menu">
   <br>
-  <img width="795" height="250" src="img/demo.gif">
+  <img src="img/preview.png">
 </div>
 
 ## Features
