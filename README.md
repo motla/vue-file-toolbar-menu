@@ -7,12 +7,13 @@
 
 ## Features
 ### :rocket: [See live demo](https://motla.github.io/vue-file-toolbar-menu)
-- Reactive content using Vue.js
-- Add your own button or menu components
-- [Material Icons](https://material.io/resources/icons/)
+- Reactive content is stored in Vue.js computed/data fields, not in template
+- Easy styling
+- Add your own custom components for menus and buttons
+- Uses standard [Material Icons](https://material.io/resources/icons/)
 - Hotkey support
 - Touch-device compatible
-- Easy multi-language implementation by using [vue-i18n](https://github.com/kazupon/vue-i18n)
+- Easy multi-language implementation ([vue-i18n](https://github.com/kazupon/vue-i18n))
 
 ## Installation
 In your Vue.js project:
