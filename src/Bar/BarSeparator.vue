@@ -2,10 +2,6 @@
   <div class="bar-separator"></div>
 </template>
 
-<script>
-export default { }
-</script>
-
 <style scoped>
 .bar-separator {
   width: var(--bar-separator-width, 2px);

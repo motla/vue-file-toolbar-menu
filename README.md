@@ -2,7 +2,7 @@
   <img width="305" height="25" src="img/logo.png" alt="vue-file-toolbar-menu">
 </div>
 <div align="center">
-  <img src="img/preview.png">
+  <img width="794" height="252" src="img/preview.png" alt="vue-file-toolbar-menu">
 </div>
 
 ## Features
@@ -153,8 +153,8 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 
 ## Project development
 - `npm run serve` compiles and hot-reloads demo for development
-- `npm run build` compiles and minifies production files and demo
 - `npm run lint` lints and fixes files
+- `npm run build` compiles and minifies production files and demo
 
 ## Dependencies
 - [hotkeys-js](https://github.com/jaywcjlove/hotkeys) by Kenny Wong, MIT License

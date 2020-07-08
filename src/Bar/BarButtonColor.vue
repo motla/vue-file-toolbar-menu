@@ -48,10 +48,13 @@ export default {
 </script>
 
 <style scoped>
-.color-square {
+.bar-button > .color-square {
   width: 15px;
   height: 15px;
   border: solid 1px rgba(0, 0, 0, 0.7);
   margin: 0 3px;
+}
+.bar-button.disabled > .color-square {
+  border: solid 1px var(--bar-button-disabled-color, rgba(0, 0, 0, 0.3));
 }
 </style>

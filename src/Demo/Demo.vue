@@ -272,7 +272,9 @@ export default {
               { text: "Release Notes", icon: "exit_to_app", click: () => window.open("https://github.com/motla/vue-file-toolbar-menu/blob/master/CHANGELOG.md") }
             ],
             menu_width: 220
-          }
+          },
+          { is: "spacer" },
+          { icon: this.edit_mode ? "lock_open" : "lock", title: "Toggle edit mode", active: !this.edit_mode, click: () => { this.edit_mode = !this.edit_mode } }
         ],
         [
           { icon: "format_align_left", title: "Align left", hotkey: this.isMacLike ? "command+shift+l" : "ctrl+shift+l", click: () => document.execCommand("justifyLeft") },
@@ -305,8 +307,7 @@ export default {
           { html: "<b>H1</b>", title: "Header 1", click: () => document.execCommand('formatBlock', false, '<h1>') },
           { html: "<b>H2</b>", title: "Header 2", click: () => document.execCommand('formatBlock', false, '<h2>') },
           { html: "<b>H3</b>", title: "Header 3", click: () => document.execCommand('formatBlock', false, '<h3>') },
-          { icon: "format_clear", text: "Clear", title: "Clear format", click () { document.execCommand('removeFormat'); document.execCommand('formatBlock', false, '<div>'); } },
-          { icon: this.edit_mode ? "lock_open" : "lock", title: "Toggle edit mode", active: !this.edit_mode, click: () => { this.edit_mode = !this.edit_mode } }
+          { icon: "format_clear", text: "Clear", title: "Clear format", click () { document.execCommand('removeFormat'); document.execCommand('formatBlock', false, '<div>'); } }
         ]
       ]
     },

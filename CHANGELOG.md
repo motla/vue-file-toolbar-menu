@@ -1,3 +1,10 @@
+## v1.1.0
+
+- Added `spacer` component
+- Added disabled mode for color menu
+- Setting parameter `menu_height` now changes CSS `max-height`
+- Moving `vue` and `core-js` to devDependencies
+
 ## v1.0.3
 
 - Minor documentation update

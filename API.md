@@ -9,7 +9,7 @@ my_menu = [
 
   { // === Button component properties (all fields are optional) ===
 
-    is: String || Object, // Component to display ["button-generic"(default), "button-color", "separator", or your own imported Vue component]
+    is: String || Object, // Component to display ["button-generic"(default), "button-color", "separator", "spacer", or your own imported Vue component]
 
     // === button-generic properties ===
     text: String, // Text displayed on the button, if any
@@ -25,7 +25,7 @@ my_menu = [
 
     // if the button-generic should open a menu:
     menu_width: Number, // Custom menu width, if any
-    menu_height: Number, // Custom menu height, if any. Setting this activates the scrollbar.
+    menu_height: Number, // Custom menu maximum height, if any. Setting this activates the scrollbar if content overflows.
     menu_class: String || Object, // Custom v-bind:class to apply to the menu, if any. You can set ["align-left"(default), "align-center", "align-right"]
     chevron: Boolean || String, // Set to true if the button should display a chevron. You can also provide the HTML for your custom chevron.
     menu: [ // The menu array of items, or your own imported Vue component

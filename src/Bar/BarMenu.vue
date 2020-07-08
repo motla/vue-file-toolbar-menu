@@ -3,7 +3,8 @@
     <div class="extended-hover-zone"></div>
     <div class="bar-menu-items" :style="{ 
         width: width+'px',
-        height: height+'px',
+        minWidth: width+'px',
+        maxHeight: height+'px',
         overflow: height ? 'auto' : 'visible'
       }">
       <component v-for="(item, index) in menu"
