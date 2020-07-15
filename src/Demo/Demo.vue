@@ -277,10 +277,10 @@ export default {
           { icon: this.edit_mode ? "lock_open" : "lock", title: "Toggle edit mode", active: !this.edit_mode, click: () => { this.edit_mode = !this.edit_mode } }
         ],
         [
-          { icon: "format_align_left", title: "Align left", hotkey: this.isMacLike ? "command+shift+l" : "ctrl+shift+l", click: () => document.execCommand("justifyLeft") },
-          { icon: "format_align_center", title: "Align center", hotkey: this.isMacLike ? "command+shift+e" : "ctrl+shift+e", click: () => document.execCommand("justifyCenter") },
-          { icon: "format_align_right", title: "Align right", hotkey: this.isMacLike ? "command+shift+r" : "ctrl+shift+r", click: () => document.execCommand("justifyRight") },
-          { icon: "format_align_justify", title: "Justify content", hotkey: this.isMacLike ? "command+shift+j" : "ctrl+shift+j", click: () => document.execCommand("justifyFull") },
+          { icon: "format_align_left", title: "Align left", hotkey: this.isMacLike ? "shift+command+l" : "ctrl+shift+l", click: () => document.execCommand("justifyLeft") },
+          { icon: "format_align_center", title: "Align center", hotkey: this.isMacLike ? "shift+command+e" : "ctrl+shift+e", click: () => document.execCommand("justifyCenter") },
+          { icon: "format_align_right", title: "Align right", hotkey: this.isMacLike ? "shift+command+r" : "ctrl+shift+r", click: () => document.execCommand("justifyRight") },
+          { icon: "format_align_justify", title: "Justify content", hotkey: this.isMacLike ? "shift+command+j" : "ctrl+shift+j", click: () => document.execCommand("justifyFull") },
           { is: "separator" },
           { icon: "format_bold", title: "Bold", hotkey: this.isMacLike ? "command+b" : "ctrl+b", click: () => document.execCommand("bold") },
           { icon: "format_italic", title: "Italic", hotkey: this.isMacLike ? "command+i" : "ctrl+i", click: () => document.execCommand("italic") },

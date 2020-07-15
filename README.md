@@ -1,8 +1,8 @@
 <div align="center">
-  <img width="305" height="25" src="img/logo.png" alt="vue-file-toolbar-menu">
+  <img width="305" height="25" src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/logo.png" alt="vue-file-toolbar-menu">
 </div>
 <div align="center">
-  <img width="794" height="252" src="img/preview.png" alt="vue-file-toolbar-menu">
+  <img width="794" height="252" src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/preview.png">
 </div>
 
 ## Features
@@ -15,12 +15,16 @@
 - Touch-device compatible
 - Easy multi-language implementation ([vue-i18n](https://github.com/kazupon/vue-i18n))
 
+###### :speech_balloon: If you plan to build a document editor, check out [vue-document-editor](https://github.com/motla/vue-document-editor)
+
 ## Installation
 In your Vue.js project:
 
 ```
 npm install vue-file-toolbar-menu
 ```
+
+###### :speech_balloon: You also need to install [`sass`](https://www.npmjs.com/package/sass) and [`sass-loader`](https://www.npmjs.com/package/sass-loader) if not already present in your project
 
 ###### :speech_balloon: If you prefer static files, import assets from the `dist` folder
 
@@ -72,7 +76,7 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 
 
 ### Docs-like:
-<img src="img/docs-theme.png">
+<img width="319" height="92" src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/docs-theme.png">
 <details>
 <summary>View CSS variables</summary>
 
@@ -113,7 +117,7 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 
 ### macOS-like:
 ###### :microscope: (CSS backdrop filter is still experimental!)
-<img src="img/macos-theme.png">
+<img width="332" height="76" src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/macos-theme.png">
 <details>
 <summary>View CSS variables</summary>
 

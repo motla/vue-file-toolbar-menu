@@ -1,6 +1,6 @@
 {
   "name": "vue-file-toolbar-menu",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "UI file/toolbar menus for Vue apps",
   "author": {
     "name": "Romain Lamothe",
@@ -53,6 +53,10 @@
     "sass-loader": "^8.0.2",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
+  },
+  "peerDependencies": {
+    "sass": ">=1.26.5",
+    "sass-loader": ">=8.0.2"
   },
   "eslintConfig": {
     "root": true,
