@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="305" height="25" src="img/logo.png" alt="vue-file-toolbar-menu">
+  <img width="305" height="25" src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/logo.png" alt="vue-file-toolbar-menu">
 </div>
 
 # API
