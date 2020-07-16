@@ -1,6 +1,6 @@
 ## v1.1.1
 
-- Added `sass` and `sass-loader` to `peerDependencies` in package.json and in the README
+- Added `sass-loader` to `peerDependencies` in package.json
 - Github issue templates
 - Minor updates to README
 
