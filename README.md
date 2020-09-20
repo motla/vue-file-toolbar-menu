@@ -103,6 +103,7 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
   --bar-menu-item-padding: 5px 8px 5px 35px;
   --bar-menu-item-icon-size: 15px;
   --bar-menu-item-icon-margin: 0 9px 0 -25px;
+  --bar-menu-min-width: 160px;
   --bar-menu-padding: 6px 1px;
   --bar-menu-shadow: 0 2px 6px 2px rgba(60, 64, 67, 0.15);
   --bar-menu-separator-height: 1px;
