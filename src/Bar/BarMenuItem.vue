@@ -45,6 +45,10 @@ export default {
 
   methods: {
     get_emoji: emoji_name => emoji.get(emoji_name),
+    get_component (is) {
+      if(is && !Array.isArray(is) && typeof is == "object") return is;
+      else return "bar-menu";
+    }
   }
 }
 </script>

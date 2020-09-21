@@ -1,8 +1,8 @@
 <div align="center">
-  <img width="305" height="25" src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/logo.png" alt="vue-file-toolbar-menu">
+  <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/logo.png" alt="vue-file-toolbar-menu">
 </div>
 <div align="center">
-  <img width="794" height="252" src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/preview.png">
+  <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/preview.png">
 </div>
 
 ## Features
@@ -15,7 +15,7 @@
 - Touch-device compatible
 - Easy multi-language implementation ([vue-i18n](https://github.com/kazupon/vue-i18n))
 
-###### :speech_balloon: If you plan to build a document editor, check out [vue-document-editor](https://github.com/motla/vue-document-editor)
+###### :speech_balloon: If you plan to build a document editor, also check out [vue-document-editor](https://github.com/motla/vue-document-editor)
 
 ## Installation
 In your Vue.js project:
@@ -63,22 +63,25 @@ export default {
 ```
 Should render this:
 
-<img width="201" height="134" src="img/basic-example.png">
+<img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/basic-example.png">
 
 ## Complete example
 See the [Demo.vue](src/Demo/Demo.vue) file corresponding to the [live demo](https://motla.github.io/vue-file-toolbar-menu). **Also read the [API](API.md)**.
 
 ## Styling
 
-Styling can be done either by writing CSS variables or by overloading CSS properties using `!important`. View the [default stylesheet](src/Bar/imports/bar-default-styles.scss) for reference.
+Styling can be done either by writing CSS variables or by overloading CSS properties using `!important`.
+
+**Check the CSS variables declaration and default values in the [default stylesheet](src/Bar/imports/bar-default-styles.scss).**
 
 ###### :speech_balloon: If you need some variables that are missing, edit the stylesheet then submit a PR.
 
+#### Some styling examples:
 
-### Docs-like:
-<img width="319" height="92" src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/docs-theme.png">
-<details>
-<summary>View CSS variables</summary>
+- #### Docs-like theme:
+
+<img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/docs-theme.png">
+<details><summary>View the CSS variables settings for this theme</summary>
 
 ```css
 :root {
@@ -115,11 +118,11 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 ```
 </details>
 
-### macOS-like:
+- #### macOS-like theme:
 ###### :microscope: (CSS backdrop filter is still experimental!)
-<img width="332" height="76" src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/macos-theme.png">
+<img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/macos-theme.png">
 <details>
-<summary>View CSS variables</summary>
+<summary>View the CSS variables settings for this theme</summary>
 
 ```css
 :root {
@@ -150,6 +153,9 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
   --bar-menu-separator-height: 2px;
   --bar-menu-separator-margin: 5px 0;
   --bar-menu-separator-color: rgba(0, 0, 0, 0.08);
+  --bar-separator-color: rgba(0, 0, 0, 0.1);
+  --bar-separator-width: 2px;
+  --bar-separator-margin: 5px 7px;
   --bar-sub-menu-border-radius: 6px;
 }
 ```

@@ -1,3 +1,9 @@
+## v1.1.2
+
+- Separator and spacer styles moved to bar-default-styles.scss
+- Minor code refactoring
+- Minor updates to README
+
 ## v1.1.1
 
 - Added `sass-loader` to `peerDependencies` in package.json

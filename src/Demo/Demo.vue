@@ -108,6 +108,9 @@
         --bar-menu-separator-height: 2px;
         --bar-menu-separator-margin: 5px 0;
         --bar-menu-separator-color: rgba(0, 0, 0, 0.08);
+        --bar-separator-color: rgba(0, 0, 0, 0.1);
+        --bar-separator-width: 2px;
+        --bar-separator-margin: 5px 7px;
         --bar-sub-menu-border-radius: 6px;
       }
       .bars > .bar:not(:first-child) {
@@ -223,7 +226,7 @@ export default {
               { text: "Material icon", icon: "shopping_cart", click: () => window.open("https://material.io/resources/icons", "_blank") },
               { text: "Platform emoji", emoji: "call_me_hand", click: () => window.open("https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json", "_blank") },
               { text: "Menu text is wrapped when it is too long" },
-              { is: DemoCustomMenuItem },
+              { is: DemoCustomMenuItem, text: "Your component", click: () => alert("Your custom action!") },
               { is: "separator" },
               {
                 text: "Option 1",
@@ -302,7 +305,7 @@ export default {
           { icon: "format_indent_increase", title: "Increase indent", click: () => document.execCommand("indent") },
           { icon: "format_indent_decrease", title: "Decrease indent", click: () => document.execCommand("outdent") },
           { is: "separator" },
-          { is: DemoCustomButton, click: () => alert("Your custom action!") },
+          { is: DemoCustomButton, text: "Your component", click: () => alert("Your custom action!") },
           { is: "separator" },
           { html: "<b>H1</b>", title: "Header 1", click: () => document.execCommand('formatBlock', false, '<h1>') },
           { html: "<b>H2</b>", title: "Header 2", click: () => document.execCommand('formatBlock', false, '<h2>') },

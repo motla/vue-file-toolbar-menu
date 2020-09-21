@@ -1,6 +1,6 @@
 <template>
   <div class="bar-menu-item" @mousedown="(e) => e.preventDefault()" @click="(e) => item.click ? item.click(e) : e.stopPropagation()">
-    <div class="label">Your component</div>
+    <div class="label">{{item.text}}</div>
   </div>
 </template>
 

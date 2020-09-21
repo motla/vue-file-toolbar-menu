@@ -32,10 +32,6 @@ export default {
     hotkey_fn (event, handler) {
       event.preventDefault();
       if(this.item.click) this.item.click(event, handler);
-    },
-    get_component(is) {
-      if(is && !Array.isArray(is) && typeof is == "object") return is;
-      else return "bar-menu";
     }
   },
 

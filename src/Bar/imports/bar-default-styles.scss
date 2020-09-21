@@ -22,7 +22,7 @@
     width: 16px;
     height: 16px;
   }
-  ::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner {
     display: none;
   }
   ::-webkit-scrollbar-thumb {
@@ -134,7 +134,6 @@
         }
       }
 
-
       & > .bar-menu-item {
         position: relative;
         display: flex;
@@ -189,6 +188,22 @@
           bottom: -100px;
         }
       }
+
+      & > .bar-menu-separator {
+        height: var(--bar-menu-separator-height, 1px);
+        margin: var(--bar-menu-separator-margin, 5px 0);
+        background-color: var(--bar-menu-separator-color, rgba(0, 0, 0, 0.1));
+      }
     }
+  }
+
+  .bar-separator {
+    width: var(--bar-separator-width, 2px);
+    margin: var(--bar-separator-margin, 5px);
+    background-color: var(--bar-separator-color, rgba(0, 0, 0, 0.1));
+  }
+
+  .bar-spacer {
+    flex-grow: 1;
   }
 }
