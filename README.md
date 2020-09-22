@@ -81,7 +81,7 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 - #### Docs-like theme:
 
 <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/docs-theme.png">
-<details><summary>View the CSS variables settings for this theme</summary>
+<details><summary>View specific CSS variables for this theme</summary>
 
 ```css
 :root {
@@ -122,7 +122,7 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 ###### :microscope: (CSS backdrop filter is still experimental!)
 <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/macos-theme.png">
 <details>
-<summary>View the CSS variables settings for this theme</summary>
+<summary>View specific CSS variables for this theme</summary>
 
 ```css
 :root {
