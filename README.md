@@ -72,7 +72,7 @@ See the [Demo.vue](src/Demo/Demo.vue) file corresponding to the [live demo](http
 
 Styling can be done either by writing CSS variables or by overloading CSS properties using `!important`.
 
-**Check the CSS variables declaration and default values in the [default stylesheet](src/Bar/imports/bar-default-styles.scss).**
+**Check the CSS variables list and default values in the [default stylesheet](src/Bar/imports/bar-default-styles.scss).**
 
 ###### :speech_balloon: If you need some variables that are missing, edit the stylesheet then submit a PR.
 
