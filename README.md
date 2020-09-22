@@ -66,13 +66,13 @@ Should render this:
 <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/basic-example.png">
 
 ## Complete example
-See the [Demo.vue](src/Demo/Demo.vue) file corresponding to the [live demo](https://motla.github.io/vue-file-toolbar-menu). **Also read the [API](API.md)**.
+See the [Demo.vue](src/Demo/Demo.vue) file corresponding to the [live demo](https://motla.github.io/vue-file-toolbar-menu). **:blue_book: Also read the [API](API.md)**.
 
 ## Styling
 
-Styling can be done either by writing CSS variables or by overloading CSS properties using `!important`.
+Styling can be done either by writing CSS variables or by overloading CSS properties using [`!important`](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#How_!important_can_be_used).
 
-**Check the CSS variables list and default values in the [default stylesheet](src/Bar/imports/bar-default-styles.scss).**
+**:blue_book: Check the CSS variables list and default values in the [default stylesheet](src/Bar/imports/bar-default-styles.scss).**
 
 ###### :speech_balloon: If you need some variables that are missing, edit the stylesheet then submit a PR.
 
