@@ -1,13 +1,11 @@
 <template>
-  <div class="bar-button" :class="button_class" :title="title" v-on="$listeners"
-    @mousedown="(e) => e.preventDefault()"
-    @click="(e) => item.click ? item.click(e) : e.stopPropagation()">
+  <div class="bar-button" :class="button_class" :title="title" v-on="$listeners" @mousedown="mousedown_handler">
 
     <div class="color-square" :style="{ 'background-color': css_color }"></div>
 
-    <component v-model="color"
-      :is="item.type || 'compact'" class="menu"
-      :class="item.menu_class" />
+    <div class="menu" :class="item.menu_class" @click="(e) => item.stay_open ? e.stopPropagation() : true">
+      <component v-model="color" :is="item.type || 'compact'" />
+    </div>
 
   </div>
 </template>
@@ -33,6 +31,13 @@ export default {
     is_menu () { return true; },
     css_color () {
       return this.color.hex8 || this.color || "#000"
+    }
+  },
+
+  methods: {
+    mousedown_handler (e) {
+      // prevent loosing current text selection, unless the user clicks on an <input> of the color box
+      if(e.target.tagName.toLowerCase() != 'input') e.preventDefault();
     }
   },
 

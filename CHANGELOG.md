@@ -1,3 +1,9 @@
+## v1.1.3
+
+- Bug fix "Color picker turned off once clicked" (https://github.com/motla/vue-file-toolbar-menu/issues/4)
+  - New option `stay_open` for `button-color`
+  - API.md update
+
 ## v1.1.2
 
 - Separator and spacer styles moved to bar-default-styles.scss

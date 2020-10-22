@@ -161,6 +161,9 @@ export default {
   },
 
   computed: {
+
+    // Read the API documentation about the available menu content options
+
     bars_content () {
       const mac_os_menus = (this.theme == "mac-os") ? [
         {
@@ -289,7 +292,14 @@ export default {
           { icon: "format_italic", title: "Italic", hotkey: this.isMacLike ? "command+i" : "ctrl+i", click: () => document.execCommand("italic") },
           { icon: "format_underline", title: "Underline", hotkey: this.isMacLike ? "command+u" : "ctrl+u", click: () => document.execCommand("underline") },
           { icon: "format_strikethrough", title: "Strike through", click: () => document.execCommand("strikethrough") },
-          { is: "button-color", type: "compact", menu_class: "align-center", color: this.color, update_color: (new_color) => { this.color = new_color; document.execCommand('foreColor', false, new_color.hex8); } },
+          {
+            is: "button-color",
+            type: "compact",
+            menu_class: "align-center",
+            stay_open: false,
+            color: this.color,
+            update_color: (new_color) => { this.color = new_color; document.execCommand('foreColor', false, new_color.hex8); }
+          },
           { is: "separator" },
           {
             html: '<div class="ellipsis" style="width: 80px; font-size: 95%;">'+this.font+'</div>',

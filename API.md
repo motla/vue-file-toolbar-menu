@@ -56,6 +56,9 @@ my_menu = [
     // === button-color properties ===
     type: String, // Color picker format: ["compact"(default), "material", "swatches", "slider", "sketch", "chrome", "photoshop"] (see https://github.com/xiaokaike/vue-color#live-demo)
     title: String, // Text to display in the button tooltip, if any
+    menu_class: String || Object, // Custom v-bind:class to apply to the color picker box, if any. You can set ["align-left"(default), "align-center", "align-right"]
+    stay_open: Boolean, // If set, the color picker will stay open when the user clicks on it
+    disabled: Boolean, // Set to true if the color picker is disabled
     color: String || Object, // Current color to display (see compatible formats: https://github.com/xiaokaike/vue-color#usage)
     update_color: function (new_color) { // Callback when user changes the color. 1st argument is an object containing the new color in several formats:
       new_color = {
