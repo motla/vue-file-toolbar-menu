@@ -1,7 +1,7 @@
 <template>
   <div class="bar-menu-item"
     @mousedown="(e) => e.preventDefault()"
-    @click="(e) => item.click ? item.click(e) : e.stopPropagation()"
+    @click="click"
     :class="{ disabled: item.disabled, active: item.active }"
     :title="item.title"
     :style="{ height: item.height+'px' }">
@@ -15,7 +15,7 @@
     <span v-if="item.menu && item.custom_chevron" class="chevron" v-html="item.custom_chevron"></span>
     <span v-else-if="item.menu" class="material-icons chevron">chevron_right</span>
 
-    <component class="menu" v-if="item.menu"
+    <component ref="menu" class="menu" v-if="item.menu"
       :is="get_component(item.menu)"
       :menu="item.menu"
       :class="item.menu_class"
@@ -44,6 +44,12 @@ export default {
   },
 
   methods: {
+    click (e) {
+      if(this.item.click) this.item.click(e);
+      else if(!this.$refs.menu || !e.composedPath || !e.composedPath().includes(this.$refs.menu.$el)) {
+        e.stopPropagation(); // prevent menu close for touch devices
+      }
+    },
     get_emoji: emoji_name => emoji.get(emoji_name),
     get_component (is) {
       if(is && !Array.isArray(is) && typeof is == "object") return is;

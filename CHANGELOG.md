@@ -1,6 +1,10 @@
+## v1.1.4
+
+- Bug fix [Issue 6](https://github.com/motla/vue-file-toolbar-menu/issues/6): Menu did not close when clicking sub-menus that had click events
+
 ## v1.1.3
 
-- Bug fix "Color picker turned off once clicked" (https://github.com/motla/vue-file-toolbar-menu/issues/4)
+- Bug fix [Issue 4](https://github.com/motla/vue-file-toolbar-menu/issues/4): "Color picker turned off once clicked"
   - New option `stay_open` for `button-color`
   - API.md update
 
