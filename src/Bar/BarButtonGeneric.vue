@@ -1,7 +1,7 @@
 <template>
   <div class="bar-button" :class="button_class" :title="title" v-on="$listeners"
     @mousedown="(e) => e.preventDefault()"
-    @click="(e) => item.click ? item.click(e) : e.stopPropagation()">
+    @click="(e) => (item.click && !item.disabled) ? item.click(e) : e.stopPropagation()">
     
     <span v-if="item.icon" class="material-icons icon">{{ item.icon }}</span>
     <span v-if="item.emoji" class="emoji">{{ get_emoji(item.emoji) }}</span>

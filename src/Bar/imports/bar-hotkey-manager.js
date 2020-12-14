@@ -31,7 +31,7 @@ export default {
     },
     hotkey_fn (event, handler) {
       event.preventDefault();
-      if(this.item.click) this.item.click(event, handler);
+      if(this.item.click && !this.item.disabled) this.item.click(event, handler);
     }
   },
 

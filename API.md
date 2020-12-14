@@ -19,7 +19,7 @@ my_menu = [
     emoji: String, // Name of Emoji to display, if any (from this list: https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json)
     hotkey: String, // Hotkey combination shortcut for the button, if any (use this format: https://github.com/jaywcjlove/hotkeys#supported-keys)
     active: Boolean, // Set to true if the button is toggled
-    disabled: Boolean, // Set to true if the button is disabled
+    disabled: Boolean, // Set to true if the button is disabled (it will prevent click event)
     click: Function, // v-on:click event handler function, if any
     class: String || Object, // Custom v-bind:class to apply to the button, if any
 
@@ -40,7 +40,7 @@ my_menu = [
         icon: String, // Name of Material icon to display, if any (see https://material.io/resources/icons/)
         emoji: String, // Name of Emoji to display, if any (from this list: https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json)
         hotkey: String, // Hotkey combination shortcut for the menu, if any (use this format: https://github.com/jaywcjlove/hotkeys#supported-keys)
-        disabled: Boolean, // Set to true if the menu is disabled
+        disabled: Boolean, // Set to true if the menu is disabled (it will prevent click event)
         click: Function, // v-on:click event handler function, if any
         class: String || Object, // Custom v-bind:class to apply to the menu item, if any
 
@@ -58,7 +58,7 @@ my_menu = [
     title: String, // Text to display in the button tooltip, if any
     menu_class: String || Object, // Custom v-bind:class to apply to the color picker box, if any. You can set ["align-left"(default), "align-center", "align-right"]
     stay_open: Boolean, // If set, the color picker will stay open when the user clicks on it
-    disabled: Boolean, // Set to true if the color picker is disabled
+    disabled: Boolean, // Set to true if the color picker is disabled (it will prevent opening)
     color: String || Object, // Current color to display (see compatible formats: https://github.com/xiaokaike/vue-color#usage)
     update_color: function (new_color) { // Callback when user changes the color. 1st argument is an object containing the new color in several formats:
       new_color = {

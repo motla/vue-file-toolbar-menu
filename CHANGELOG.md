@@ -1,3 +1,8 @@
+## v1.2.0
+
+- Bug fix [Issue 7](https://github.com/motla/vue-file-toolbar-menu/issues/7): `disable` option now prevents the `click` event
+- Dependencies upgrade
+
 ## v1.1.4
 
 - Bug fix [Issue 6](https://github.com/motla/vue-file-toolbar-menu/issues/6): Menu did not close when clicking sub-menus that had click events

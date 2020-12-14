@@ -45,7 +45,7 @@ export default {
 
   methods: {
     click (e) {
-      if(this.item.click) this.item.click(e);
+      if(this.item.click && !this.item.disabled) this.item.click(e);
       else if(!this.$refs.menu || !e.composedPath || !e.composedPath().includes(this.$refs.menu.$el)) {
         e.stopPropagation(); // prevent menu close for touch devices
       }
