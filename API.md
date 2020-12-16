@@ -21,12 +21,14 @@ my_menu = [
     active: Boolean, // Set to true if the button is toggled
     disabled: Boolean, // Set to true if the button is disabled (it will prevent click event)
     click: Function, // v-on:click event handler function, if any
-    class: String || Object, // Custom v-bind:class to apply to the button, if any
+    class: String || Object, // v-bind:class to apply to the button, if any
+    id: String, // Element id to apply to the button, if any
 
     // if the button-generic should open a menu:
     menu_width: Number, // Custom menu width, if any
     menu_height: Number, // Custom menu maximum height, if any. Setting this activates the scrollbar if content overflows.
-    menu_class: String || Object, // Custom v-bind:class to apply to the menu, if any. You can set ["align-left"(default), "align-center", "align-right"]
+    menu_class: String || Object, // v-bind:class to apply to the menu, if any. You can set ["align-left"(default), "align-center", "align-right"]
+    menu_id: String, // Element id to apply to the menu, if any
     chevron: Boolean || String, // Set to true if the button should display a chevron. You can also provide the HTML for your custom chevron.
     menu: [ // The menu array of items, or your own imported Vue component
       
@@ -42,12 +44,14 @@ my_menu = [
         hotkey: String, // Hotkey combination shortcut for the menu, if any (use this format: https://github.com/jaywcjlove/hotkeys#supported-keys)
         disabled: Boolean, // Set to true if the menu is disabled (it will prevent click event)
         click: Function, // v-on:click event handler function, if any
-        class: String || Object, // Custom v-bind:class to apply to the menu item, if any
+        class: String || Object, // v-bind:class to apply to the menu item, if any
+        id: String, // Element id to apply to the menu item, if any
 
         // If the menu should open a sub-menu:
         menu_width: Number, // Custom sub-menu width, if any
         menu_height: Number, // Custom sub-menu height, if any. Setting this activates the scrollbar.
-        menu_class: String || Object, // Custom v-bind:class to apply to the sub-menu, if any
+        menu_class: String || Object, // v-bind:class to apply to the sub-menu, if any
+        menu_id: String, // Element id to apply to the sub-menu, if any
         custom_chevron: String, // HTML of your custom chevron, if any. Set to "" to hide chevron.
         menu: Array || Object // (see button-generic menu property)
       }
@@ -57,6 +61,7 @@ my_menu = [
     type: String, // Color picker format: ["compact"(default), "material", "swatches", "slider", "sketch", "chrome", "photoshop"] (see https://github.com/xiaokaike/vue-color#live-demo)
     title: String, // Text to display in the button tooltip, if any
     menu_class: String || Object, // Custom v-bind:class to apply to the color picker box, if any. You can set ["align-left"(default), "align-center", "align-right"]
+    menu_id: String, // Element id to apply to the color picker box, if any
     stay_open: Boolean, // If set, the color picker will stay open when the user clicks on it
     disabled: Boolean, // Set to true if the color picker is disabled (it will prevent opening)
     color: String || Object, // Current color to display (see compatible formats: https://github.com/xiaokaike/vue-color#usage)

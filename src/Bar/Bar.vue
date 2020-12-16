@@ -6,6 +6,7 @@
       :ref="'bar-item-'+item_idx"
       :item="item"
       :class="item.class"
+      :id="item.id"
       :is_open="menu_open"
       @click="(event) => toggle_menu('bar-item-'+item_idx, event)" />
   </div>

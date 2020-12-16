@@ -19,6 +19,7 @@
       :is="get_component(item.menu)"
       :menu="item.menu"
       :class="item.menu_class"
+      :id="item.menu_id"
       :width="item.menu_width"
       :height="item.menu_height" />
 

@@ -1,3 +1,8 @@
+## v1.3.0
+
+- Enhancement [Issue 13](https://github.com/motla/vue-file-toolbar-menu/issues/13): user can now set menu elements `id`
+  - API.md update
+
 ## v1.2.0
 
 - Bug fix [Issue 7](https://github.com/motla/vue-file-toolbar-menu/issues/7): `disable` option now prevents the `click` event

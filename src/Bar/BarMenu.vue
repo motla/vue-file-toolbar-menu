@@ -11,6 +11,7 @@
       :is="get_component(item.is)"
       :item="item"
       :class="item.class"
+      :id="item.id"
       :key="'menu-'+index" />
     </div>
   </div>

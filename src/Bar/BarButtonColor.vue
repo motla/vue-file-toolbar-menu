@@ -3,7 +3,7 @@
 
     <div class="color-square" :style="{ 'background-color': css_color }"></div>
 
-    <div class="menu" :class="item.menu_class" @click="(e) => item.stay_open ? e.stopPropagation() : true">
+    <div class="menu" :class="item.menu_class" :id="item.menu_id" @click="(e) => item.stay_open ? e.stopPropagation() : true">
       <component v-model="color" :is="item.type || 'compact'" />
     </div>
 
