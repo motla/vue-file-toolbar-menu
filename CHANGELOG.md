@@ -1,3 +1,8 @@
+## v1.3.1
+
+- Dependencies upgrade
+- Changing `material-design-icons` to `material-icons` package (only the icon font and required CSS, considerably smaller and updated regularly)
+
 ## v1.3.0
 
 - Enhancement [Issue 13](https://github.com/motla/vue-file-toolbar-menu/issues/13): user can now set menu elements `id`

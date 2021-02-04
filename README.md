@@ -168,7 +168,7 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 
 ## Dependencies
 - [hotkeys-js](https://github.com/jaywcjlove/hotkeys) by Kenny Wong, MIT License
-- [material-design-icons](https://github.com/google/material-design-icons) by Google, Apache-2.0 License
+- [material-icons](https://github.com/marella/material-icons) by marella and Google, Apache-2.0 License
 - [node-emoji](https://github.com/omnidan/node-emoji) by Daniel Bugl, MIT License
 - [vue-color](https://github.com/xiaokaike/vue-color) by xiaokaike, MIT License
 
