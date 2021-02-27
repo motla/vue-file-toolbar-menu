@@ -1,6 +1,6 @@
 {
   "name": "vue-file-toolbar-menu",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "UI file/toolbar menus for Vue apps",
   "author": {
     "name": "Romain Lamothe",
@@ -29,7 +29,7 @@
   "homepage": "https://github.com/motla/vue-file-toolbar-menu",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --dest docs && vue-cli-service build --target lib --name vue-file-toolbar-menu src/Bar/Bar.vue",
+    "build": "vue-cli-service build --dest docs && vue-cli-service build --target lib --name VueFileToolbarMenu src/Bar/Bar.vue",
     "lint": "vue-cli-service lint",
     "preversion": "npm run lint",
     "version": "npm run build && git add -A"

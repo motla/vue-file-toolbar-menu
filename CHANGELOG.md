@@ -1,3 +1,8 @@
+## v1.3.2
+
+- Renaming the static library "VueFileToolbarMenu"
+- Adding UMD example to README.md
+
 ## v1.3.1
 
 - Dependencies upgrade

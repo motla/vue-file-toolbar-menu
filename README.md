@@ -61,6 +61,49 @@ export default {
 }
 </script>
 ```
+<details>
+<summary><small>same example using static files loaded with a CDN</small></summary>
+
+```HTML
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-file-toolbar-menu@1/dist/VueFileToolbarMenu.umd.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/vue-document-editor@1/dist/VueFileToolbarMenu.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <vue-file-toolbar-menu :content="my_menu" />
+  </div>
+  <script>
+  var app = new Vue({
+    el: '#app',
+    components: { VueFileToolbarMenu },
+
+    data () { return { happy: false } },
+
+    computed: {
+      my_menu () {
+        return [
+          { text: "My Menu", menu: [
+            { text: "Item 1", click: () => alert("Action 1") },
+            { text: "Item 2", click: () => alert("Action 2") }
+          ] }, {
+            text: "My Button",
+            active: this.happy,
+            icon: this.happy ? "sentiment_very_satisfied" : "sentiment_satisfied",
+            click: () => { this.happy = !this.happy }
+          }
+        ]
+      }
+    }
+  })
+  </script>
+</body>
+</html>
+```
+
+</details>
 Should render this:
 
 <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/basic-example.png">
