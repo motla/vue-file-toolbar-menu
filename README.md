@@ -61,6 +61,10 @@ export default {
 }
 </script>
 ```
+Should render this:
+
+<img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/basic-example.png">
+
 <details>
 <summary><small>same example using static files loaded with a CDN</small></summary>
 
@@ -69,7 +73,7 @@ export default {
 <head>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue-file-toolbar-menu@1/dist/VueFileToolbarMenu.umd.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/vue-document-editor@1/dist/VueFileToolbarMenu.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vue-file-toolbar-menu@1/dist/VueFileToolbarMenu.css" rel="stylesheet">
 </head>
 <body>
   <div id="app">
@@ -104,9 +108,6 @@ export default {
 ```
 
 </details>
-Should render this:
-
-<img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/basic-example.png">
 
 ## Complete example
 See the [Demo.vue](src/Demo/Demo.vue) file corresponding to the [live demo](https://motla.github.io/vue-file-toolbar-menu). **:blue_book: Also read the [API](API.md)**.
