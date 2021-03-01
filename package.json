@@ -42,14 +42,14 @@
     "vue-color": "^2.8.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.4.6",
-    "@vue/cli-plugin-eslint": "^4.4.6",
-    "@vue/cli-service": "^4.4.6",
+    "@vue/cli-plugin-babel": "^4.5.11",
+    "@vue/cli-plugin-eslint": "^4.5.11",
+    "@vue/cli-service": "^4.5.11",
     "babel-eslint": "^10.1.0",
-    "core-js": "^3.8.3",
+    "core-js": "^3.9.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "sass": "^1.32.6",
+    "sass": "^1.32.8",
     "sass-loader": "^8.0.2",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12"
