@@ -88,7 +88,7 @@
       left: 0;
       top: 100%;
       display: none;
-      z-index: 1;
+      z-index: 1000;
     }
     & > .menu.align-left {
       left: 0;
@@ -174,7 +174,7 @@
           left: 100%;
           top: 0;
           display: none;
-          z-index: 1;
+          z-index: 1000;
         }
         &:hover > .menu {
           display: block;

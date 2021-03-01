@@ -1,3 +1,7 @@
+## v1.3.3
+
+- Setting the CSS `z-index` of menus to 1000 (it was 1 previously)
+
 ## v1.3.2
 
 - Renaming the static library "VueFileToolbarMenu"
