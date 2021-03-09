@@ -42,11 +42,17 @@ export default {
   },
 
   watch: {
-    color (new_color) {
-      if(this.item.update_color) this.item.update_color(new_color);
-    },
     "item.color" (item_color) {
-      this.color = item_color;
+      if(this.color != item_color) {
+        this._prevent_next_color_update = true;
+        this.color = item_color;
+      }
+    },
+    color (new_color) {
+      if(this.item.update_color && !this._prevent_next_color_update) {
+        this.item.update_color(new_color);
+      }
+      this._prevent_next_color_update = false;
     }
   }
 }

@@ -1,3 +1,7 @@
+## v1.3.4
+
+- \[Color button\] Prevent calling `color_update()` callback when the color is changed not from the color palette
+
 ## v1.3.3
 
 - Setting the CSS `z-index` of menus to 1000 (it was 1 previously)
