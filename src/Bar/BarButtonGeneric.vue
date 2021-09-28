@@ -1,5 +1,5 @@
 <template>
-  <div class="bar-button" :class="button_class" :title="title" v-on="$listeners"
+  <div class="bar-button" :class="button_class" :title="title"
     @mousedown="(e) => e.preventDefault()"
     @click="(e) => (item.click && !item.disabled) ? item.click(e) : e.stopPropagation()">
     
@@ -63,7 +63,7 @@ export default {
   methods: {
     get_emoji: emoji_name => emoji.get(emoji_name),
     get_component (is) {
-      if(is && !Array.isArray(is) && typeof is == "object") return is;
+      if(is && !Array.isArray(is) && typeof is == "object") return is; // if component
       else return "bar-menu";
     }
   }

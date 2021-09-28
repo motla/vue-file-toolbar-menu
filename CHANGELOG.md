@@ -1,3 +1,9 @@
+## v2.0.0
+
+- Switching `master` branch to Vue3 (we provide vue2 compatibility on the vue2 branch / @1.x version of this library)
+- Switched `vue-color` to the `@ckpack/vue-color` fork for Vue3 compatibility
+- Dependencies upgrade
+
 ## v1.3.4
 
 - \[Color button\] Prevent calling `color_update()` callback when the color is changed not from the color palette

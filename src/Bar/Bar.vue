@@ -3,12 +3,12 @@
     <component v-for="(item, item_idx) in content"
       :is="get_component(item.is)"
       :key="'bar-item-'+item_idx"
-      :ref="'bar-item-'+item_idx"
       :item="item"
       :class="item.class"
       :id="item.id"
       :is_open="menu_open"
-      @click="(event) => toggle_menu('bar-item-'+item_idx, event)" />
+      :ref="(el) => Object.defineProperty(item, '_el', { value: el, writable: true })"
+      @click="toggle_menu(item, $event)" />
   </div>
 </template>
 
@@ -46,15 +46,13 @@ export default {
     clickaway (e) {
       if(!this.$el.contains(e.target)) this.menu_open = false;
     },
-    toggle_menu(name, event) {
+    toggle_menu(item, event) {
       event.stopPropagation();
-      const ref = this.$refs[name][0];
-      const disabled = ref.item && ref.item.disabled;
       const touch = event.sourceCapabilities && event.sourceCapabilities.firesTouchEvents;
-      this.menu_open = ref.is_menu && !disabled ? (touch ? true : !this.menu_open) : false;
+      this.menu_open = item._el.is_menu && !item.disabled ? (touch ? true : !this.menu_open) : false;
     },
     get_component(is) {
-      if(is && !Array.isArray(is) && typeof is == "object") return is;
+      if(is && !Array.isArray(is) && typeof is == "object") return is; // if component
       else if(typeof is == "string") return "bar-"+is;
       else return "bar-button-generic";
     }
@@ -63,7 +61,7 @@ export default {
   mounted () {
     document.addEventListener("click", this.clickaway);
   },
-  beforeDestroy () {
+  beforeUnmount () {
     document.removeEventListener("click", this.clickaway);
   }
 }

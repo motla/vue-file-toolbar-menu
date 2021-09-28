@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue'
 import emoji from 'node-emoji'
 import hotkey_manager from './imports/bar-hotkey-manager.js'
 
@@ -34,7 +35,7 @@ export default {
   mixins: [ hotkey_manager ],
 
   components: {
-    BarMenu: () => import('./BarMenu.vue') // recursive component
+    BarMenu: defineAsyncComponent(() => import('./BarMenu.vue')) // because of circular reference
   },
 
   props: {
@@ -53,7 +54,7 @@ export default {
     },
     get_emoji: emoji_name => emoji.get(emoji_name),
     get_component (is) {
-      if(is && !Array.isArray(is) && typeof is == "object") return is;
+      if(is && !Array.isArray(is) && typeof is == "object") return is; // if component
       else return "bar-menu";
     }
   }

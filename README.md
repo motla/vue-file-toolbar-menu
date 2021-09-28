@@ -7,21 +7,28 @@
 
 ## Features
 ### :rocket: [See live demo](https://motla.github.io/vue-file-toolbar-menu)
-- Reactive content is stored in Vue.js computed/data fields, not in template
+- Synced menu content (stored in Vue.js computed/data fields, not in `<template>`)
 - Easy styling
 - Add your own custom components for menus and buttons
 - Uses standard [Material Icons](https://material.io/resources/icons/)
 - Hotkey support
 - Touch-device compatible
 - Easy multi-language implementation ([vue-i18n](https://github.com/kazupon/vue-i18n))
+- Migrated to Vue.js 3.x (to use with Vue 2.x, select library version 1.x)
 
 ###### :speech_balloon: If you plan to build a document editor, also check out [vue-document-editor](https://github.com/motla/vue-document-editor)
 
 ## Installation
-In your Vue.js project:
+##### In your Vue.js 3.x project:
 
 ```
 npm install vue-file-toolbar-menu
+```
+
+##### In your Vue.js 2.x project:
+
+```
+npm install vue-file-toolbar-menu@1
 ```
 
 ###### :warning: Your Vue.js project must have [`scss`](https://vue-loader.vuejs.org/guide/pre-processors.html#sass) support
@@ -71,9 +78,9 @@ Should render this:
 ```HTML
 <html>
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue-file-toolbar-menu@1/dist/VueFileToolbarMenu.umd.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/vue-file-toolbar-menu@1/dist/VueFileToolbarMenu.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-file-toolbar-menu@2/dist/VueFileToolbarMenu.umd.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/vue-file-toolbar-menu@2/dist/VueFileToolbarMenu.css" rel="stylesheet">
 </head>
 <body>
   <div id="app">

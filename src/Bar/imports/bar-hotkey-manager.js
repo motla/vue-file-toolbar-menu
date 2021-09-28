@@ -42,7 +42,7 @@ export default {
     }
   },
 
-  beforeDestroy () {
+  beforeUnmount () {
     if(this.item.hotkey) hotkeys.unbind(this.item.hotkey, this.hotkey_fn);
   }
 }

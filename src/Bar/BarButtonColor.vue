@@ -1,5 +1,5 @@
 <template>
-  <div class="bar-button" :class="button_class" :title="title" v-on="$listeners" @mousedown="mousedown_handler">
+  <div class="bar-button" :class="button_class" :title="title" @mousedown="mousedown_handler">
 
     <div class="color-square" :style="{ 'background-color': css_color }"></div>
 
@@ -12,15 +12,11 @@
 
 <script>
 import BarButtonGeneric from './BarButtonGeneric.vue'
-import VueColor from 'vue-color'
+import { components as VueColorComponents } from '@ckpack/vue-color'
 
 export default {
   mixins: [ BarButtonGeneric ],
-
-  components: {
-    ...VueColor
-  },
-
+  components: VueColorComponents.reduce((acc, cur) => { acc[cur.name] = cur; return acc; }, {}),
   data () {
     return {
       color: this.item.color

@@ -134,15 +134,9 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import VueFileToolbarMenu from '../Bar/Bar.vue'
 import DemoCustomButton from './DemoCustomButton.vue'
 import DemoCustomMenuItem from './DemoCustomMenuItem.vue'
-
-// for dynamic css variables
-Vue.component("v-style", {
-  render (createElement) { return createElement("style", this.$slots.default); }
-});
 
 export default {
   components: { VueFileToolbarMenu },
@@ -212,7 +206,10 @@ export default {
                     text: "I'm a sub-menu",
                     custom_chevron: this.theme != "default" ? "►" : false,
                     menu: [
-                      { text: "And I'm another sub-menu!" },
+                      {
+                        text: "And I'm another sub-menu!",
+                        click: () => console.log("Sub-menu clicked!")
+                      },
                     ],
                     menu_width: 240
                   }
@@ -427,13 +424,14 @@ select {
   padding: var(--demo-bars-padding, 8px);
   transition: .5s;
 }
-::v-deep.bars * {
+::v-deep(.bars) * {
   transition: font-size .1s linear, padding .1s linear, margin .1s linear;
 }
 .styles {
   position: fixed;
   top: 10px;
   right: 10px;
+  z-index: 1;
 }
 .text {
   font-family: var(--bar-font-family);
