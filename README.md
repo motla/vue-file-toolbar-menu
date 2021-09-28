@@ -78,7 +78,7 @@ Should render this:
 ```HTML
 <html>
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue-file-toolbar-menu@2/dist/VueFileToolbarMenu.umd.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/vue-file-toolbar-menu@2/dist/VueFileToolbarMenu.css" rel="stylesheet">
 </head>
@@ -87,8 +87,7 @@ Should render this:
     <vue-file-toolbar-menu :content="my_menu" />
   </div>
   <script>
-  var app = new Vue({
-    el: '#app',
+  const app = Vue.createApp({
     components: { VueFileToolbarMenu },
 
     data () { return { happy: false } },
@@ -108,7 +107,7 @@ Should render this:
         ]
       }
     }
-  })
+  }).mount('#app');
   </script>
 </body>
 </html>
