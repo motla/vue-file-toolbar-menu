@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/logo.png" alt="vue-file-toolbar-menu">
+  <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/logo.png" alt="vue-file-toolbar-menu" width="305" height="25">
 </div>
 <div align="center">
-  <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/preview.png">
+  <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/preview.png" width="794" height="252">
 </div>
 
 ## Features
@@ -70,7 +70,7 @@ export default {
 ```
 Should render this:
 
-<img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/basic-example.png">
+<img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/basic-example.png" width="201" height="134">
 
 <details>
 <summary><small>same example using static files loaded with a CDN</small></summary>
@@ -130,7 +130,7 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 
 - #### Docs-like theme:
 
-<img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/docs-theme.png">
+<img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/docs-theme.png" width="319" height="92">
 <details><summary>View specific CSS variables for this theme</summary>
 
 ```css
@@ -170,7 +170,7 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 
 - #### macOS-like theme:
 ###### :microscope: (CSS backdrop filter is still experimental!)
-<img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/macos-theme.png">
+<img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/macos-theme.png" width="332" height="76">
 <details>
 <summary>View specific CSS variables for this theme</summary>
 
