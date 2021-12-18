@@ -56,7 +56,7 @@ export default {
         if(this.hotkey) title += " ("+this.hotkey+")";
         return title;
       }
-      else return false;
+      else return null;
     }
   },
 
