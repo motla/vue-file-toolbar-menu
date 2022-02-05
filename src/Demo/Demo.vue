@@ -134,7 +134,7 @@
 </template>
 
 <script>
-import VueFileToolbarMenu from '../Bar/Bar.vue'
+import VueFileToolbarMenu from '../Bar/Bar.vue' // set from 'vue-file-toolbar-menu' in your application
 import DemoCustomButton from './DemoCustomButton.vue'
 import DemoCustomMenuItem from './DemoCustomMenuItem.vue'
 

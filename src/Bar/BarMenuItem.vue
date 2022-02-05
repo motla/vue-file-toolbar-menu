@@ -28,7 +28,7 @@
 
 <script>
 import { defineAsyncComponent } from 'vue'
-import emoji from 'node-emoji'
+import emoji from '../../node_modules/node-emoji/lib/emoji.json';
 import hotkey_manager from './imports/bar-hotkey-manager.js'
 
 export default {
@@ -52,7 +52,7 @@ export default {
         e.stopPropagation(); // prevent menu close for touch devices
       }
     },
-    get_emoji: emoji_name => emoji.get(emoji_name),
+    get_emoji: emoji_name => (emoji_name in emoji) ? emoji[emoji_name] : "",
     get_component (is) {
       if(is && !Array.isArray(is) && typeof is == "object") return is; // if component
       else return "bar-menu";

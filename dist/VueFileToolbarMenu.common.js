@@ -146,111 +146,22 @@ module.exports = String(test) === '[object z]';
 
 /***/ }),
 
-/***/ "00fd":
-/***/ (function(module, exports, __webpack_require__) {
-
-var Symbol = __webpack_require__("9e69");
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/** Built-in value references. */
-var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-
-/**
- * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the raw `toStringTag`.
- */
-function getRawTag(value) {
-  var isOwn = hasOwnProperty.call(value, symToStringTag),
-      tag = value[symToStringTag];
-
-  try {
-    value[symToStringTag] = undefined;
-    var unmasked = true;
-  } catch (e) {}
-
-  var result = nativeObjectToString.call(value);
-  if (unmasked) {
-    if (isOwn) {
-      value[symToStringTag] = tag;
-    } else {
-      delete value[symToStringTag];
-    }
-  }
-  return result;
-}
-
-module.exports = getRawTag;
-
-
-/***/ }),
-
 /***/ "0366":
 /***/ (function(module, exports, __webpack_require__) {
 
 var uncurryThis = __webpack_require__("e330");
 var aCallable = __webpack_require__("59ed");
+var NATIVE_BIND = __webpack_require__("40d5");
 
 var bind = uncurryThis(uncurryThis.bind);
 
 // optional / simple context binding
 module.exports = function (fn, that) {
   aCallable(fn);
-  return that === undefined ? fn : bind ? bind(fn, that) : function (/* ...args */) {
+  return that === undefined ? fn : NATIVE_BIND ? bind(fn, that) : function (/* ...args */) {
     return fn.apply(that, arguments);
   };
 };
-
-
-/***/ }),
-
-/***/ "03dd":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isPrototype = __webpack_require__("eac5"),
-    nativeKeys = __webpack_require__("57a5");
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- */
-function baseKeys(object) {
-  if (!isPrototype(object)) {
-    return nativeKeys(object);
-  }
-  var result = [];
-  for (var key in Object(object)) {
-    if (hasOwnProperty.call(object, key) && key != 'constructor') {
-      result.push(key);
-    }
-  }
-  return result;
-}
-
-module.exports = baseKeys;
 
 
 /***/ }),
@@ -314,31 +225,6 @@ exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDes
 
 /***/ }),
 
-/***/ "07c7":
-/***/ (function(module, exports) {
-
-/**
- * This method returns `false`.
- *
- * @static
- * @memberOf _
- * @since 4.13.0
- * @category Util
- * @returns {boolean} Returns `false`.
- * @example
- *
- * _.times(2, _.stubFalse);
- * // => [false, false]
- */
-function stubFalse() {
-  return false;
-}
-
-module.exports = stubFalse;
-
-
-/***/ }),
-
 /***/ "07fa":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -349,55 +235,6 @@ var toLength = __webpack_require__("50c4");
 module.exports = function (obj) {
   return toLength(obj.length);
 };
-
-
-/***/ }),
-
-/***/ "0875":
-/***/ (function(module, exports) {
-
-/**
- * Converts `iterator` to an array.
- *
- * @private
- * @param {Object} iterator The iterator to convert.
- * @returns {Array} Returns the converted array.
- */
-function iteratorToArray(iterator) {
-  var data,
-      result = [];
-
-  while (!(data = iterator.next()).done) {
-    result.push(data.value);
-  }
-  return result;
-}
-
-module.exports = iteratorToArray;
-
-
-/***/ }),
-
-/***/ "0b07":
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseIsNative = __webpack_require__("34ac"),
-    getValue = __webpack_require__("3698");
-
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */
-function getNative(object, key) {
-  var value = getValue(object, key);
-  return baseIsNative(value) ? value : undefined;
-}
-
-module.exports = getNative;
 
 
 /***/ }),
@@ -490,60 +327,14 @@ var DESCRIPTORS = __webpack_require__("83ab");
 var fails = __webpack_require__("d039");
 var createElement = __webpack_require__("cc12");
 
-// Thank's IE8 for his funny defineProperty
+// Thanks to IE8 for its funny defineProperty
 module.exports = !DESCRIPTORS && !fails(function () {
-  // eslint-disable-next-line es/no-object-defineproperty -- requied for testing
+  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
   return Object.defineProperty(createElement('div'), 'a', {
     get: function () { return 7; }
   }).a != 7;
 });
 
-
-/***/ }),
-
-/***/ "0d24":
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__("2b3e"),
-    stubFalse = __webpack_require__("07c7");
-
-/** Detect free variable `exports`. */
-var freeExports =  true && exports && !exports.nodeType && exports;
-
-/** Detect free variable `module`. */
-var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
-
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports = freeModule && freeModule.exports === freeExports;
-
-/** Built-in value references. */
-var Buffer = moduleExports ? root.Buffer : undefined;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
-
-/**
- * Checks if `value` is a buffer.
- *
- * @static
- * @memberOf _
- * @since 4.3.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
- * @example
- *
- * _.isBuffer(new Buffer(2));
- * // => true
- *
- * _.isBuffer(new Uint8Array(2));
- * // => false
- */
-var isBuffer = nativeIsBuffer || stubFalse;
-
-module.exports = isBuffer;
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("62e4")(module)))
 
 /***/ }),
 
@@ -579,94 +370,6 @@ module.exports = fails(function () {
   return re.exec('b').groups.a !== 'b' ||
     'b'.replace(re, '$<a>c') !== 'bc';
 });
-
-
-/***/ }),
-
-/***/ "126d":
-/***/ (function(module, exports, __webpack_require__) {
-
-var asciiToArray = __webpack_require__("6da8"),
-    hasUnicode = __webpack_require__("aaec"),
-    unicodeToArray = __webpack_require__("d094");
-
-/**
- * Converts `string` to an array.
- *
- * @private
- * @param {string} string The string to convert.
- * @returns {Array} Returns the converted array.
- */
-function stringToArray(string) {
-  return hasUnicode(string)
-    ? unicodeToArray(string)
-    : asciiToArray(string);
-}
-
-module.exports = stringToArray;
-
-
-/***/ }),
-
-/***/ "1310":
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && typeof value == 'object';
-}
-
-module.exports = isObjectLike;
-
-
-/***/ }),
-
-/***/ "1368":
-/***/ (function(module, exports, __webpack_require__) {
-
-var coreJsData = __webpack_require__("da03");
-
-/** Used to detect methods masquerading as native. */
-var maskSrcKey = (function() {
-  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
-  return uid ? ('Symbol(src)_1.' + uid) : '';
-}());
-
-/**
- * Checks if `func` has its source masked.
- *
- * @private
- * @param {Function} func The function to check.
- * @returns {boolean} Returns `true` if `func` is masked, else `false`.
- */
-function isMasked(func) {
-  return !!maskSrcKey && (maskSrcKey in func);
-}
-
-module.exports = isMasked;
 
 
 /***/ }),
@@ -728,64 +431,12 @@ module.exports = Object.hasOwn || function hasOwn(it, key) {
 
 /***/ }),
 
-/***/ "1a8c":
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject(value) {
-  var type = typeof value;
-  return value != null && (type == 'object' || type == 'function');
-}
-
-module.exports = isObject;
-
-
-/***/ }),
-
 /***/ "1be4":
 /***/ (function(module, exports, __webpack_require__) {
 
 var getBuiltIn = __webpack_require__("d066");
 
 module.exports = getBuiltIn('document', 'documentElement');
-
-
-/***/ }),
-
-/***/ "1cec":
-/***/ (function(module, exports, __webpack_require__) {
-
-var getNative = __webpack_require__("0b07"),
-    root = __webpack_require__("2b3e");
-
-/* Built-in method references that are verified to be native. */
-var Promise = getNative(root, 'Promise');
-
-module.exports = Promise;
 
 
 /***/ }),
@@ -961,57 +612,6 @@ $({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, 
 
 /***/ }),
 
-/***/ "253c":
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseGetTag = __webpack_require__("3729"),
-    isObjectLike = __webpack_require__("1310");
-
-/** `Object#toString` result references. */
-var argsTag = '[object Arguments]';
-
-/**
- * The base implementation of `_.isArguments`.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- */
-function baseIsArguments(value) {
-  return isObjectLike(value) && baseGetTag(value) == argsTag;
-}
-
-module.exports = baseIsArguments;
-
-
-/***/ }),
-
-/***/ "266a":
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayMap = __webpack_require__("7948");
-
-/**
- * The base implementation of `_.values` and `_.valuesIn` which creates an
- * array of `object` property values corresponding to the property names
- * of `props`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {Array} props The property names to get values for.
- * @returns {Object} Returns the array of property values.
- */
-function baseValues(object, props) {
-  return arrayMap(props, function(key) {
-    return object[key];
-  });
-}
-
-module.exports = baseValues;
-
-
-/***/ }),
-
 /***/ "2670":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1058,10 +658,10 @@ var esm_typeof = __webpack_require__("53ca");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/Bar/BarMenuItem.vue?vue&type=template&id=0ae8a65c
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/Bar/BarMenuItem.vue?vue&type=template&id=63f64ca6
 
-var BarMenuItemvue_type_template_id_0ae8a65c_hoisted_1 = ["title"];
-var BarMenuItemvue_type_template_id_0ae8a65c_hoisted_2 = {
+var BarMenuItemvue_type_template_id_63f64ca6_hoisted_1 = ["title"];
+var BarMenuItemvue_type_template_id_63f64ca6_hoisted_2 = {
   key: 0,
   class: "material-icons icon"
 };
@@ -1083,7 +683,7 @@ var _hoisted_8 = {
   key: 6,
   class: "material-icons chevron"
 };
-function BarMenuItemvue_type_template_id_0ae8a65c_render(_ctx, _cache, $props, $setup, $data, $options) {
+function BarMenuItemvue_type_template_id_63f64ca6_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", {
     class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])(["bar-menu-item", {
       disabled: $props.item.disabled,
@@ -1099,7 +699,7 @@ function BarMenuItemvue_type_template_id_0ae8a65c_render(_ctx, _cache, $props, $
     style: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeStyle"])({
       height: $props.item.height + 'px'
     })
-  }, [$props.item.icon ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", BarMenuItemvue_type_template_id_0ae8a65c_hoisted_2, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.item.icon), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), $props.item.emoji ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", _hoisted_3, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($options.get_emoji($props.item.emoji)), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), $props.item.text ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", _hoisted_4, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.item.text), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), $props.item.html ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", {
+  }, [$props.item.icon ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", BarMenuItemvue_type_template_id_63f64ca6_hoisted_2, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.item.icon), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), $props.item.emoji ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", _hoisted_3, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($options.get_emoji($props.item.emoji)), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), $props.item.text ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", _hoisted_4, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])($props.item.text), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), $props.item.html ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", {
     key: 3,
     class: "label",
     innerHTML: $props.item.html
@@ -1115,9 +715,9 @@ function BarMenuItemvue_type_template_id_0ae8a65c_render(_ctx, _cache, $props, $
     id: $props.item.menu_id,
     width: $props.item.menu_width,
     height: $props.item.menu_height
-  }, null, 8, ["menu", "class", "id", "width", "height"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 46, BarMenuItemvue_type_template_id_0ae8a65c_hoisted_1);
+  }, null, 8, ["menu", "class", "id", "width", "height"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 46, BarMenuItemvue_type_template_id_63f64ca6_hoisted_1);
 }
-// CONCATENATED MODULE: ./src/Bar/BarMenuItem.vue?vue&type=template&id=0ae8a65c
+// CONCATENATED MODULE: ./src/Bar/BarMenuItem.vue?vue&type=template&id=63f64ca6
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
 var es_object_to_string = __webpack_require__("d3b7");
@@ -1134,9 +734,8 @@ var es_array_includes = __webpack_require__("caad");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
 var es_string_includes = __webpack_require__("2532");
 
-// EXTERNAL MODULE: ./node_modules/node-emoji/index.js
-var node_emoji = __webpack_require__("b90b");
-var node_emoji_default = /*#__PURE__*/__webpack_require__.n(node_emoji);
+// EXTERNAL MODULE: ./node_modules/node-emoji/lib/emoji.json
+var emoji = __webpack_require__("f9ea");
 
 // EXTERNAL MODULE: ./src/Bar/imports/bar-hotkey-manager.js + 1 modules
 var bar_hotkey_manager = __webpack_require__("de35");
@@ -1172,7 +771,7 @@ var bar_hotkey_manager = __webpack_require__("de35");
       }
     },
     get_emoji: function get_emoji(emoji_name) {
-      return node_emoji_default.a.get(emoji_name);
+      return emoji_name in emoji ? emoji[emoji_name] : "";
     },
     get_component: function get_component(is) {
       if (is && !Array.isArray(is) && Object(esm_typeof["a" /* default */])(is) == "object") return is; // if component
@@ -1192,7 +791,7 @@ var exportHelper_default = /*#__PURE__*/__webpack_require__.n(exportHelper);
 
 
 
-const __exports__ = /*#__PURE__*/exportHelper_default()(BarMenuItemvue_type_script_lang_js, [['render',BarMenuItemvue_type_template_id_0ae8a65c_render]])
+const __exports__ = /*#__PURE__*/exportHelper_default()(BarMenuItemvue_type_script_lang_js, [['render',BarMenuItemvue_type_template_id_63f64ca6_render]])
 
 /* harmony default export */ var BarMenuItem = (__exports__);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/Bar/BarMenuSeparator.vue?vue&type=template&id=4ba03b66
@@ -1251,371 +850,17 @@ const BarMenu_exports_ = /*#__PURE__*/exportHelper_default()(BarMenuvue_type_scr
 
 /***/ }),
 
-/***/ "2895":
-/***/ (function(module, exports, __webpack_require__) {
-
-/*jslint node: true*/
-var toArray = __webpack_require__("4d90");
-var emojiByName = __webpack_require__("f9ea");
-
-"use strict";
-
-/**
- * regex to parse emoji in a string - finds emoji, e.g. :coffee:
- */
-var emojiNameRegex = /:([a-zA-Z0-9_\-\+]+):/g;
-
-/**
- * regex to trim whitespace
- * use instead of String.prototype.trim() for IE8 support
- */
-var trimSpaceRegex = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-
-/**
- * Removes colons on either side
- * of the string if present
- * @param  {string} str
- * @return {string}
- */
-function stripColons (str) {
-  var colonIndex = str.indexOf(':');
-  if (colonIndex > -1) {
-    // :emoji: (http://www.emoji-cheat-sheet.com/)
-    if (colonIndex === str.length - 1) {
-      str = str.substring(0, colonIndex);
-      return stripColons(str);
-    } else {
-      str = str.substr(colonIndex + 1);
-      return stripColons(str);
-    }
-  }
-
-  return str;
-}
-
-/**
- * Adds colons to either side
- * of the string
- * @param {string} str
- * @return {string}
- */
-function wrapColons (str) {
-  return (typeof str === 'string' && str.length > 0) ? ':' + str + ':' : str;
-}
-
-/**
- * Ensure that the word is wrapped in colons
- * by only adding them, if they are not there.
- * @param {string} str
- * @return {string}
- */
-function ensureColons (str) {
-  return (typeof str === 'string' && str[0] !== ':') ? wrapColons(str) : str;
-}
-
-// Non spacing mark, some emoticons have them. It's the 'Variant Form',
-// which provides more information so that emoticons can be rendered as
-// more colorful graphics. FE0E is a unicode text version, where as FE0F
-// should be rendered as a graphical version. The code gracefully degrades.
-var NON_SPACING_MARK = String.fromCharCode(65039); // 65039 - '️' - 0xFE0F;
-var nonSpacingRegex = new RegExp(NON_SPACING_MARK, 'g')
-
-// Remove the non-spacing-mark from the code, never send a stripped version
-// to the client, as it kills graphical emoticons.
-function stripNSB (code) {
-  return code.replace(nonSpacingRegex, '');
-};
-
-// Reversed hash table, where as emojiByName contains a { heart: '❤' }
-// dictionary emojiByCode contains { ❤: 'heart' }. The codes are normalized
-// to the text version.
-var emojiByCode = Object.keys(emojiByName).reduce(function(h,k) {
-  h[stripNSB(emojiByName[k])] = k;
-  return h;
-}, {});
-
-/**
- * Emoji namespace
- */
-var Emoji = {
-  emoji: emojiByName,
-};
-
-/**
- * get emoji code from name. return emoji code back if code is passed in.
- * @param  {string} emoji
- * @return {string}
- */
-Emoji._get = function _get (emoji) {
-  if (emojiByCode[stripNSB(emoji)]) {
-    return emoji;
-  } else if (emojiByName.hasOwnProperty(emoji)) {
-    return emojiByName[emoji];
-  }
-
-  return ensureColons(emoji);
-};
-
-/**
- * get emoji code from :emoji: string or name
- * @param  {string} emoji
- * @return {string}
- */
-Emoji.get = function get (emoji) {
-  emoji = stripColons(emoji);
-
-  return Emoji._get(emoji);
-};
-
-/**
- * find the emoji by either code or name
- * @param {string} nameOrCode The emoji to find, either `coffee`, `:coffee:` or `☕`;
- * @return {object}
- */
-Emoji.find = function find (nameOrCode) {
-  return Emoji.findByName(nameOrCode) || Emoji.findByCode(nameOrCode);
-};
-
-/**
- * find the emoji by name
- * @param {string} name The emoji to find either `coffee` or `:coffee:`;
- * @return {object}
- */
-Emoji.findByName = function findByName (name) {
-  var stripped = stripColons(name);
-  var emoji = emojiByName[stripped];
-
-  return emoji ? ({ emoji: emoji, key: stripped }) : undefined;
-};
-
-/**
- * find the emoji by code (emoji)
- * @param {string} code The emoji to find; for example `☕` or `☔`
- * @return {object}
- */
-Emoji.findByCode = function findByCode (code) {
-  var stripped = stripNSB(code);
-  var name = emojiByCode[stripped];
-
-  // lookup emoji to ensure the Variant Form is returned
-  return name ? ({ emoji: emojiByName[name], key: name }) : undefined;
-};
-
-
-/**
- * Check if an emoji is known by this library
- * @param {string} nameOrCode The emoji to validate, either `coffee`, `:coffee:` or `☕`;
- * @return {object}
- */
-Emoji.hasEmoji = function hasEmoji (nameOrCode) {
-  return Emoji.hasEmojiByName(nameOrCode) || Emoji.hasEmojiByCode(nameOrCode);
-};
-
-/**
- * Check if an emoji with given name is known by this library
- * @param {string} name The emoji to validate either `coffee` or `:coffee:`;
- * @return {object}
- */
-Emoji.hasEmojiByName = function hasEmojiByName (name) {
-  var result = Emoji.findByName(name);
-  return !!result && result.key === stripColons(name);
-};
-
-/**
- * Check if a given emoji is known by this library
- * @param {string} code The emoji to validate; for example `☕` or `☔`
- * @return {object}
- */
-Emoji.hasEmojiByCode = function hasEmojiByCode (code) {
-  var result = Emoji.findByCode(code);
-  return !!result && stripNSB(result.emoji) === stripNSB(code);
-};
-
-/**
- * get emoji name from code
- * @param  {string} emoji
- * @param  {boolean} includeColons should the result include the ::
- * @return {string}
- */
-Emoji.which = function which (emoji_code, includeColons) {
-  var code = stripNSB(emoji_code);
-  var word = emojiByCode[code];
-
-  return includeColons ? wrapColons(word) : word;
-};
-
-/**
- * emojify a string (replace :emoji: with an emoji)
- * @param  {string} str
- * @param  {function} on_missing (gets emoji name without :: and returns a proper emoji if no emoji was found)
- * @param  {function} format (wrap the returned emoji in a custom element)
- * @return {string}
- */
-Emoji.emojify = function emojify (str, on_missing, format) {
-  if (!str) return '';
-
-  return str.split(emojiNameRegex) // parse emoji via regex
-            .map(function parseEmoji(s, i) {
-              // every second element is an emoji, e.g. "test :fast_forward:" -> [ "test ", "fast_forward" ]
-              if (i % 2 === 0) return s;
-              var emoji = Emoji._get(s);
-              var isMissing = emoji.indexOf(':') > -1;
-
-              if (isMissing && typeof on_missing === 'function') {
-                return on_missing(s);
-              }
-
-              if (!isMissing && typeof format === 'function') {
-                return format(emoji, s);
-              }
-
-              return emoji;
-            })
-            .join('') // convert back to string
-  ;
-};
-
-/**
- * return a random emoji
- * @return {string}
- */
-Emoji.random = function random () {
-  var emojiKeys = Object.keys(emojiByName);
-  var randomIndex = Math.floor(Math.random() * emojiKeys.length);
-  var key = emojiKeys[randomIndex];
-  var emoji = Emoji._get(key);
-  return { key: key, emoji: emoji };
-}
-
-/**
- *  return an collection of potential emoji matches
- *  @param {string} str
- *  @return {Array.<Object>}
- */
-Emoji.search = function search (str) {
-  var emojiKeys = Object.keys(emojiByName);
-  var matcher = stripColons(str)
-  var matchingKeys = emojiKeys.filter(function(key) {
-    return key.toString().indexOf(matcher) === 0;
-  });
-  return matchingKeys.map(function(key) {
-    return {
-      key: key,
-      emoji: Emoji._get(key),
-    };
-  });
-}
-
-/**
- * unemojify a string (replace emoji with :emoji:)
- * @param  {string} str
- * @return {string}
- */
-Emoji.unemojify = function unemojify (str) {
-  if (!str) return '';
-  var words = toArray(str);
-
-  return words.map(function(word) {
-    return Emoji.which(word, true) || word;
-  }).join('');
-};
-
-/**
- * replace emojis with replacement value
- * @param {string} str
- * @param {function|string} the string or callback function to replace the emoji with
- * @param {boolean} should trailing whitespaces be cleaned? Defaults false
- * @return {string}
- */
-Emoji.replace = function replace (str, replacement, cleanSpaces) {
-  if (!str) return '';
-
-  var replace = typeof replacement === 'function' ? replacement : function() { return replacement; };
-  var words = toArray(str);
-
-  var replaced = words.map(function(word, idx) {
-    var emoji = Emoji.findByCode(word);
-
-    if (emoji && cleanSpaces && words[idx + 1] === ' ') {
-      words[idx + 1] = '';
-    }
-
-    return emoji ? replace(emoji) : word;
-  }).join('');
-
-  return cleanSpaces ? replaced.replace(trimSpaceRegex, '') : replaced;
-};
-
-
-/**
- * remove all emojis from a string
- * @param {string} str
- * @return {string}
- */
-Emoji.strip = function strip (str) {
-  return Emoji.replace(str, '', true);
-};
-
-module.exports = Emoji;
-
-
-/***/ }),
-
-/***/ "29f3":
-/***/ (function(module, exports) {
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/**
- * Converts `value` to a string using `Object.prototype.toString`.
- *
- * @private
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- */
-function objectToString(value) {
-  return nativeObjectToString.call(value);
-}
-
-module.exports = objectToString;
-
-
-/***/ }),
-
-/***/ "2b3e":
-/***/ (function(module, exports, __webpack_require__) {
-
-var freeGlobal = __webpack_require__("585a");
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-module.exports = root;
-
-
-/***/ }),
-
 /***/ "2ba4":
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+var NATIVE_BIND = __webpack_require__("40d5");
 
 var FunctionPrototype = Function.prototype;
 var apply = FunctionPrototype.apply;
-var bind = FunctionPrototype.bind;
 var call = FunctionPrototype.call;
 
 // eslint-disable-next-line es/no-reflect -- safe
-module.exports = typeof Reflect == 'object' && Reflect.apply || (bind ? call.bind(apply) : function () {
+module.exports = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? call.bind(apply) : function () {
   return call.apply(apply, arguments);
 });
 
@@ -1656,46 +901,6 @@ module.exports = version;
 
 /***/ }),
 
-/***/ "30c9":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isFunction = __webpack_require__("9520"),
-    isLength = __webpack_require__("b218");
-
-/**
- * Checks if `value` is array-like. A value is considered array-like if it's
- * not a function and has a `value.length` that's an integer greater than or
- * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
- * @example
- *
- * _.isArrayLike([1, 2, 3]);
- * // => true
- *
- * _.isArrayLike(document.body.children);
- * // => true
- *
- * _.isArrayLike('abc');
- * // => true
- *
- * _.isArrayLike(_.noop);
- * // => false
- */
-function isArrayLike(value) {
-  return value != null && isLength(value.length) && !isFunction(value);
-}
-
-module.exports = isArrayLike;
-
-
-/***/ }),
-
 /***/ "342f":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1706,119 +911,11 @@ module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
 /***/ }),
 
-/***/ "34ac":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isFunction = __webpack_require__("9520"),
-    isMasked = __webpack_require__("1368"),
-    isObject = __webpack_require__("1a8c"),
-    toSource = __webpack_require__("dc57");
-
-/**
- * Used to match `RegExp`
- * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
- */
-var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
-
-/** Used to detect host constructors (Safari). */
-var reIsHostCtor = /^\[object .+?Constructor\]$/;
-
-/** Used for built-in method references. */
-var funcProto = Function.prototype,
-    objectProto = Object.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Used to detect if a method is native. */
-var reIsNative = RegExp('^' +
-  funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
-  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
-);
-
-/**
- * The base implementation of `_.isNative` without bad shim checks.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a native function,
- *  else `false`.
- */
-function baseIsNative(value) {
-  if (!isObject(value) || isMasked(value)) {
-    return false;
-  }
-  var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
-  return pattern.test(toSource(value));
-}
-
-module.exports = baseIsNative;
-
-
-/***/ }),
-
-/***/ "3698":
-/***/ (function(module, exports) {
-
-/**
- * Gets the value at `key` of `object`.
- *
- * @private
- * @param {Object} [object] The object to query.
- * @param {string} key The key of the property to get.
- * @returns {*} Returns the property value.
- */
-function getValue(object, key) {
-  return object == null ? undefined : object[key];
-}
-
-module.exports = getValue;
-
-
-/***/ }),
-
-/***/ "3729":
-/***/ (function(module, exports, __webpack_require__) {
-
-var Symbol = __webpack_require__("9e69"),
-    getRawTag = __webpack_require__("00fd"),
-    objectToString = __webpack_require__("29f3");
-
-/** `Object#toString` result references. */
-var nullTag = '[object Null]',
-    undefinedTag = '[object Undefined]';
-
-/** Built-in value references. */
-var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-function baseGetTag(value) {
-  if (value == null) {
-    return value === undefined ? undefinedTag : nullTag;
-  }
-  return (symToStringTag && symToStringTag in Object(value))
-    ? getRawTag(value)
-    : objectToString(value);
-}
-
-module.exports = baseGetTag;
-
-
-/***/ }),
-
 /***/ "37e8":
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__("83ab");
+var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__("aed9");
 var definePropertyModule = __webpack_require__("9bf2");
 var anObject = __webpack_require__("825a");
 var toIndexedObject = __webpack_require__("fc6a");
@@ -1827,7 +924,7 @@ var objectKeys = __webpack_require__("df75");
 // `Object.defineProperties` method
 // https://tc39.es/ecma262/#sec-object.defineproperties
 // eslint-disable-next-line es/no-object-defineproperties -- safe
-module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperties(O, Properties) {
+exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var props = toIndexedObject(Properties);
   var keys = objectKeys(Properties);
@@ -1837,20 +934,6 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
   while (length > index) definePropertyModule.f(O, key = keys[index++], props[key]);
   return O;
 };
-
-
-/***/ }),
-
-/***/ "39ff":
-/***/ (function(module, exports, __webpack_require__) {
-
-var getNative = __webpack_require__("0b07"),
-    root = __webpack_require__("2b3e");
-
-/* Built-in method references that are verified to be native. */
-var WeakMap = getNative(root, 'WeakMap');
-
-module.exports = WeakMap;
 
 
 /***/ }),
@@ -1928,47 +1011,6 @@ module.exports = {};
 
 /***/ }),
 
-/***/ "3ff1":
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseValues = __webpack_require__("266a"),
-    keys = __webpack_require__("ec69");
-
-/**
- * Creates an array of the own enumerable string keyed property values of `object`.
- *
- * **Note:** Non-object values are coerced to objects.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Object
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property values.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- *   this.b = 2;
- * }
- *
- * Foo.prototype.c = 3;
- *
- * _.values(new Foo);
- * // => [1, 2] (iteration order is not guaranteed)
- *
- * _.values('hi');
- * // => ['h', 'i']
- */
-function values(object) {
-  return object == null ? [] : baseValues(object, keys(object));
-}
-
-module.exports = values;
-
-
-/***/ }),
-
 /***/ "4051":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1988,104 +1030,26 @@ module.exports = uncurryThis(1.0.valueOf);
 
 /***/ }),
 
+/***/ "40d5":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+
+module.exports = !fails(function () {
+  var test = (function () { /* empty */ }).bind();
+  // eslint-disable-next-line no-prototype-builtins -- safe
+  return typeof test != 'function' || test.hasOwnProperty('prototype');
+});
+
+
+/***/ }),
+
 /***/ "428f":
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("da84");
 
 module.exports = global;
-
-
-/***/ }),
-
-/***/ "42a2":
-/***/ (function(module, exports, __webpack_require__) {
-
-var DataView = __webpack_require__("b5a7"),
-    Map = __webpack_require__("79bc"),
-    Promise = __webpack_require__("1cec"),
-    Set = __webpack_require__("c869"),
-    WeakMap = __webpack_require__("39ff"),
-    baseGetTag = __webpack_require__("3729"),
-    toSource = __webpack_require__("dc57");
-
-/** `Object#toString` result references. */
-var mapTag = '[object Map]',
-    objectTag = '[object Object]',
-    promiseTag = '[object Promise]',
-    setTag = '[object Set]',
-    weakMapTag = '[object WeakMap]';
-
-var dataViewTag = '[object DataView]';
-
-/** Used to detect maps, sets, and weakmaps. */
-var dataViewCtorString = toSource(DataView),
-    mapCtorString = toSource(Map),
-    promiseCtorString = toSource(Promise),
-    setCtorString = toSource(Set),
-    weakMapCtorString = toSource(WeakMap);
-
-/**
- * Gets the `toStringTag` of `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-var getTag = baseGetTag;
-
-// Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
-if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
-    (Map && getTag(new Map) != mapTag) ||
-    (Promise && getTag(Promise.resolve()) != promiseTag) ||
-    (Set && getTag(new Set) != setTag) ||
-    (WeakMap && getTag(new WeakMap) != weakMapTag)) {
-  getTag = function(value) {
-    var result = baseGetTag(value),
-        Ctor = result == objectTag ? value.constructor : undefined,
-        ctorString = Ctor ? toSource(Ctor) : '';
-
-    if (ctorString) {
-      switch (ctorString) {
-        case dataViewCtorString: return dataViewTag;
-        case mapCtorString: return mapTag;
-        case promiseCtorString: return promiseTag;
-        case setCtorString: return setTag;
-        case weakMapCtorString: return weakMapTag;
-      }
-    }
-    return result;
-  };
-}
-
-module.exports = getTag;
-
-
-/***/ }),
-
-/***/ "4359":
-/***/ (function(module, exports) {
-
-/**
- * Copies the values of `source` to `array`.
- *
- * @private
- * @param {Array} source The array to copy values from.
- * @param {Array} [array=[]] The array to copy values to.
- * @returns {Array} Returns `array`.
- */
-function copyArray(source, array) {
-  var index = -1,
-      length = source.length;
-
-  array || (array = Array(length));
-  while (++index < length) {
-    array[index] = source[index];
-  }
-  return array;
-}
-
-module.exports = copyArray;
 
 
 /***/ }),
@@ -2248,71 +1212,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "4d90":
-/***/ (function(module, exports, __webpack_require__) {
-
-var Symbol = __webpack_require__("9e69"),
-    copyArray = __webpack_require__("4359"),
-    getTag = __webpack_require__("42a2"),
-    isArrayLike = __webpack_require__("30c9"),
-    isString = __webpack_require__("e2a0"),
-    iteratorToArray = __webpack_require__("0875"),
-    mapToArray = __webpack_require__("edfa"),
-    setToArray = __webpack_require__("ac41"),
-    stringToArray = __webpack_require__("126d"),
-    values = __webpack_require__("3ff1");
-
-/** `Object#toString` result references. */
-var mapTag = '[object Map]',
-    setTag = '[object Set]';
-
-/** Built-in value references. */
-var symIterator = Symbol ? Symbol.iterator : undefined;
-
-/**
- * Converts `value` to an array.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {Array} Returns the converted array.
- * @example
- *
- * _.toArray({ 'a': 1, 'b': 2 });
- * // => [1, 2]
- *
- * _.toArray('abc');
- * // => ['a', 'b', 'c']
- *
- * _.toArray(1);
- * // => []
- *
- * _.toArray(null);
- * // => []
- */
-function toArray(value) {
-  if (!value) {
-    return [];
-  }
-  if (isArrayLike(value)) {
-    return isString(value) ? stringToArray(value) : copyArray(value);
-  }
-  if (symIterator && value[symIterator]) {
-    return iteratorToArray(value[symIterator]());
-  }
-  var tag = getTag(value),
-      func = tag == mapTag ? mapToArray : (tag == setTag ? setToArray : values);
-
-  return func(value);
-}
-
-module.exports = toArray;
-
-
-/***/ }),
-
 /***/ "4dae":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2372,33 +1271,6 @@ var min = Math.min;
 module.exports = function (argument) {
   return argument > 0 ? min(toIntegerOrInfinity(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
 };
-
-
-/***/ }),
-
-/***/ "50d8":
-/***/ (function(module, exports) {
-
-/**
- * The base implementation of `_.times` without support for iteratee shorthands
- * or max array length checks.
- *
- * @private
- * @param {number} n The number of times to invoke `iteratee`.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the array of results.
- */
-function baseTimes(n, iteratee) {
-  var index = -1,
-      result = Array(n);
-
-  while (++index < n) {
-    result[index] = iteratee(index);
-  }
-  return result;
-}
-
-module.exports = baseTimes;
 
 
 /***/ }),
@@ -2605,9 +1477,11 @@ var store = __webpack_require__("c6cd");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.20.0',
+  version: '3.21.0',
   mode: IS_PURE ? 'pure' : 'global',
-  copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2014-2022 Denis Pushkarev (zloirock.ru)',
+  license: 'https://github.com/zloirock/core-js/blob/v3.21.0/LICENSE',
+  source: 'https://github.com/zloirock/core-js'
 });
 
 
@@ -2647,31 +1521,6 @@ module.exports = function (argument) {
   return String(argument);
 };
 
-
-/***/ }),
-
-/***/ "57a5":
-/***/ (function(module, exports, __webpack_require__) {
-
-var overArg = __webpack_require__("91e9");
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeKeys = overArg(Object.keys, Object);
-
-module.exports = nativeKeys;
-
-
-/***/ }),
-
-/***/ "585a":
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
-
-module.exports = freeGlobal;
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
 
 /***/ }),
 
@@ -2809,35 +1658,6 @@ module.exports = {
   EXISTS: EXISTS,
   PROPER: PROPER,
   CONFIGURABLE: CONFIGURABLE
-};
-
-
-/***/ }),
-
-/***/ "62e4":
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if (!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
 };
 
 
@@ -4112,39 +2932,6 @@ else {}
 
 /***/ }),
 
-/***/ "6747":
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is classified as an `Array` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array, else `false`.
- * @example
- *
- * _.isArray([1, 2, 3]);
- * // => true
- *
- * _.isArray(document.body.children);
- * // => false
- *
- * _.isArray('abc');
- * // => false
- *
- * _.isArray(_.noop);
- * // => false
- */
-var isArray = Array.isArray;
-
-module.exports = isArray;
-
-
-/***/ }),
-
 /***/ "68ee":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4299,25 +3086,6 @@ exports.default = (sfc, props) => {
 
 /***/ }),
 
-/***/ "6da8":
-/***/ (function(module, exports) {
-
-/**
- * Converts an ASCII `string` to an array.
- *
- * @private
- * @param {string} string The string to convert.
- * @returns {Array} Returns the converted array.
- */
-function asciiToArray(string) {
-  return string.split('');
-}
-
-module.exports = asciiToArray;
-
-
-/***/ }),
-
 /***/ "6eeb":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4371,62 +3139,6 @@ var TEMPLATE = String(String).split('String');
 
 /***/ }),
 
-/***/ "6fcd":
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseTimes = __webpack_require__("50d8"),
-    isArguments = __webpack_require__("d370"),
-    isArray = __webpack_require__("6747"),
-    isBuffer = __webpack_require__("0d24"),
-    isIndex = __webpack_require__("c098"),
-    isTypedArray = __webpack_require__("73ac");
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Creates an array of the enumerable property names of the array-like `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @param {boolean} inherited Specify returning inherited property names.
- * @returns {Array} Returns the array of property names.
- */
-function arrayLikeKeys(value, inherited) {
-  var isArr = isArray(value),
-      isArg = !isArr && isArguments(value),
-      isBuff = !isArr && !isArg && isBuffer(value),
-      isType = !isArr && !isArg && !isBuff && isTypedArray(value),
-      skipIndexes = isArr || isArg || isBuff || isType,
-      result = skipIndexes ? baseTimes(value.length, String) : [],
-      length = result.length;
-
-  for (var key in value) {
-    if ((inherited || hasOwnProperty.call(value, key)) &&
-        !(skipIndexes && (
-           // Safari 9 has enumerable `arguments.length` in strict mode.
-           key == 'length' ||
-           // Node.js 0.10 has enumerable non-index properties on buffers.
-           (isBuff && (key == 'offset' || key == 'parent')) ||
-           // PhantomJS 2 has enumerable non-index properties on typed arrays.
-           (isType && (key == 'buffer' || key == 'byteLength' || key == 'byteOffset')) ||
-           // Skip index properties.
-           isIndex(key, length)
-        ))) {
-      result.push(key);
-    }
-  }
-  return result;
-}
-
-module.exports = arrayLikeKeys;
-
-
-/***/ }),
-
 /***/ "7156":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4452,112 +3164,11 @@ module.exports = function ($this, dummy, Wrapper) {
 
 /***/ }),
 
-/***/ "73ac":
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseIsTypedArray = __webpack_require__("743f"),
-    baseUnary = __webpack_require__("b047"),
-    nodeUtil = __webpack_require__("99d3");
-
-/* Node.js helper references. */
-var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
-
-/**
- * Checks if `value` is classified as a typed array.
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
- * @example
- *
- * _.isTypedArray(new Uint8Array);
- * // => true
- *
- * _.isTypedArray([]);
- * // => false
- */
-var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
-
-module.exports = isTypedArray;
-
-
-/***/ }),
-
 /***/ "7418":
 /***/ (function(module, exports) {
 
 // eslint-disable-next-line es/no-object-getownpropertysymbols -- safe
 exports.f = Object.getOwnPropertySymbols;
-
-
-/***/ }),
-
-/***/ "743f":
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseGetTag = __webpack_require__("3729"),
-    isLength = __webpack_require__("b218"),
-    isObjectLike = __webpack_require__("1310");
-
-/** `Object#toString` result references. */
-var argsTag = '[object Arguments]',
-    arrayTag = '[object Array]',
-    boolTag = '[object Boolean]',
-    dateTag = '[object Date]',
-    errorTag = '[object Error]',
-    funcTag = '[object Function]',
-    mapTag = '[object Map]',
-    numberTag = '[object Number]',
-    objectTag = '[object Object]',
-    regexpTag = '[object RegExp]',
-    setTag = '[object Set]',
-    stringTag = '[object String]',
-    weakMapTag = '[object WeakMap]';
-
-var arrayBufferTag = '[object ArrayBuffer]',
-    dataViewTag = '[object DataView]',
-    float32Tag = '[object Float32Array]',
-    float64Tag = '[object Float64Array]',
-    int8Tag = '[object Int8Array]',
-    int16Tag = '[object Int16Array]',
-    int32Tag = '[object Int32Array]',
-    uint8Tag = '[object Uint8Array]',
-    uint8ClampedTag = '[object Uint8ClampedArray]',
-    uint16Tag = '[object Uint16Array]',
-    uint32Tag = '[object Uint32Array]';
-
-/** Used to identify `toStringTag` values of typed arrays. */
-var typedArrayTags = {};
-typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
-typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
-typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
-typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
-typedArrayTags[uint32Tag] = true;
-typedArrayTags[argsTag] = typedArrayTags[arrayTag] =
-typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] =
-typedArrayTags[dataViewTag] = typedArrayTags[dateTag] =
-typedArrayTags[errorTag] = typedArrayTags[funcTag] =
-typedArrayTags[mapTag] = typedArrayTags[numberTag] =
-typedArrayTags[objectTag] = typedArrayTags[regexpTag] =
-typedArrayTags[setTag] = typedArrayTags[stringTag] =
-typedArrayTags[weakMapTag] = false;
-
-/**
- * The base implementation of `_.isTypedArray` without Node.js optimizations.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
- */
-function baseIsTypedArray(value) {
-  return isObjectLike(value) &&
-    isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
-}
-
-module.exports = baseIsTypedArray;
 
 
 /***/ }),
@@ -4611,48 +3222,6 @@ module.exports = DOMTokenListPrototype === Object.prototype ? undefined : DOMTok
 
 /***/ }),
 
-/***/ "7948":
-/***/ (function(module, exports) {
-
-/**
- * A specialized version of `_.map` for arrays without support for iteratee
- * shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- */
-function arrayMap(array, iteratee) {
-  var index = -1,
-      length = array == null ? 0 : array.length,
-      result = Array(length);
-
-  while (++index < length) {
-    result[index] = iteratee(array[index], index, array);
-  }
-  return result;
-}
-
-module.exports = arrayMap;
-
-
-/***/ }),
-
-/***/ "79bc":
-/***/ (function(module, exports, __webpack_require__) {
-
-var getNative = __webpack_require__("0b07"),
-    root = __webpack_require__("2b3e");
-
-/* Built-in method references that are verified to be native. */
-var Map = getNative(root, 'Map');
-
-module.exports = Map;
-
-
-/***/ }),
-
 /***/ "7b0b":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4675,7 +3244,7 @@ module.exports = function (argument) {
 
 /* global ActiveXObject -- old IE, WSH */
 var anObject = __webpack_require__("825a");
-var defineProperties = __webpack_require__("37e8");
+var definePropertiesModule = __webpack_require__("37e8");
 var enumBugKeys = __webpack_require__("7839");
 var hiddenKeys = __webpack_require__("d012");
 var html = __webpack_require__("1be4");
@@ -4753,7 +3322,7 @@ module.exports = Object.create || function create(O, Properties) {
     // add "__proto__" for Object.getPrototypeOf polyfill
     result[IE_PROTO] = O;
   } else result = NullProtoObject();
-  return Properties === undefined ? result : defineProperties(result, Properties);
+  return Properties === undefined ? result : definePropertiesModule.f(result, Properties);
 };
 
 
@@ -5551,28 +4120,6 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 
 /***/ }),
 
-/***/ "91e9":
-/***/ (function(module, exports) {
-
-/**
- * Creates a unary function that invokes `func` with its argument transformed.
- *
- * @private
- * @param {Function} func The function to wrap.
- * @param {Function} transform The argument transform.
- * @returns {Function} Returns the new function.
- */
-function overArg(func, transform) {
-  return function(arg) {
-    return func(transform(arg));
-  };
-}
-
-module.exports = overArg;
-
-
-/***/ }),
-
 /***/ "9263":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5727,104 +4274,43 @@ module.exports = isForced;
 
 /***/ }),
 
-/***/ "9520":
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseGetTag = __webpack_require__("3729"),
-    isObject = __webpack_require__("1a8c");
-
-/** `Object#toString` result references. */
-var asyncTag = '[object AsyncFunction]',
-    funcTag = '[object Function]',
-    genTag = '[object GeneratorFunction]',
-    proxyTag = '[object Proxy]';
-
-/**
- * Checks if `value` is classified as a `Function` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a function, else `false`.
- * @example
- *
- * _.isFunction(_);
- * // => true
- *
- * _.isFunction(/abc/);
- * // => false
- */
-function isFunction(value) {
-  if (!isObject(value)) {
-    return false;
-  }
-  // The use of `Object#toString` avoids issues with the `typeof` operator
-  // in Safari 9 which returns 'object' for typed arrays and other constructors.
-  var tag = baseGetTag(value);
-  return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
-}
-
-module.exports = isFunction;
-
-
-/***/ }),
-
-/***/ "99d3":
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__("585a");
-
-/** Detect free variable `exports`. */
-var freeExports =  true && exports && !exports.nodeType && exports;
-
-/** Detect free variable `module`. */
-var freeModule = freeExports && typeof module == 'object' && module && !module.nodeType && module;
-
-/** Detect the popular CommonJS extension `module.exports`. */
-var moduleExports = freeModule && freeModule.exports === freeExports;
-
-/** Detect free variable `process` from Node.js. */
-var freeProcess = moduleExports && freeGlobal.process;
-
-/** Used to access faster Node.js helpers. */
-var nodeUtil = (function() {
-  try {
-    // Use `util.types` for Node.js 10+.
-    var types = freeModule && freeModule.require && freeModule.require('util').types;
-
-    if (types) {
-      return types;
-    }
-
-    // Legacy `process.binding('util')` for Node.js < 10.
-    return freeProcess && freeProcess.binding && freeProcess.binding('util');
-  } catch (e) {}
-}());
-
-module.exports = nodeUtil;
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("62e4")(module)))
-
-/***/ }),
-
 /***/ "9bf2":
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("da84");
 var DESCRIPTORS = __webpack_require__("83ab");
 var IE8_DOM_DEFINE = __webpack_require__("0cfb");
+var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__("aed9");
 var anObject = __webpack_require__("825a");
 var toPropertyKey = __webpack_require__("a04b");
 
 var TypeError = global.TypeError;
 // eslint-disable-next-line es/no-object-defineproperty -- safe
 var $defineProperty = Object.defineProperty;
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var ENUMERABLE = 'enumerable';
+var CONFIGURABLE = 'configurable';
+var WRITABLE = 'writable';
 
 // `Object.defineProperty` method
 // https://tc39.es/ecma262/#sec-object.defineproperty
-exports.f = DESCRIPTORS ? $defineProperty : function defineProperty(O, P, Attributes) {
+exports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPropertyKey(P);
+  anObject(Attributes);
+  if (typeof O === 'function' && P === 'prototype' && 'value' in Attributes && WRITABLE in Attributes && !Attributes[WRITABLE]) {
+    var current = $getOwnPropertyDescriptor(O, P);
+    if (current && current[WRITABLE]) {
+      O[P] = Attributes.value;
+      Attributes = {
+        configurable: CONFIGURABLE in Attributes ? Attributes[CONFIGURABLE] : current[CONFIGURABLE],
+        enumerable: ENUMERABLE in Attributes ? Attributes[ENUMERABLE] : current[ENUMERABLE],
+        writable: false
+      };
+    }
+  } return $defineProperty(O, P, Attributes);
+} : $defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPropertyKey(P);
   anObject(Attributes);
@@ -5835,19 +4321,6 @@ exports.f = DESCRIPTORS ? $defineProperty : function defineProperty(O, P, Attrib
   if ('value' in Attributes) O[P] = Attributes.value;
   return O;
 };
-
-
-/***/ }),
-
-/***/ "9e69":
-/***/ (function(module, exports, __webpack_require__) {
-
-var root = __webpack_require__("2b3e");
-
-/** Built-in value references. */
-var Symbol = root.Symbol;
-
-module.exports = Symbol;
 
 
 /***/ }),
@@ -5963,6 +4436,7 @@ var getOwnPropertyNamesExternal = __webpack_require__("057f");
 var getOwnPropertySymbolsModule = __webpack_require__("7418");
 var getOwnPropertyDescriptorModule = __webpack_require__("06cf");
 var definePropertyModule = __webpack_require__("9bf2");
+var definePropertiesModule = __webpack_require__("37e8");
 var propertyIsEnumerableModule = __webpack_require__("d1e7");
 var arraySlice = __webpack_require__("f36a");
 var redefine = __webpack_require__("6eeb");
@@ -6129,6 +4603,7 @@ if (!NATIVE_SYMBOL) {
 
   propertyIsEnumerableModule.f = $propertyIsEnumerable;
   definePropertyModule.f = $defineProperty;
+  definePropertiesModule.f = $defineProperties;
   getOwnPropertyDescriptorModule.f = $getOwnPropertyDescriptor;
   getOwnPropertyNamesModule.f = getOwnPropertyNamesExternal.f = $getOwnPropertyNames;
   getOwnPropertySymbolsModule.f = $getOwnPropertySymbols;
@@ -6367,39 +4842,6 @@ if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumb
 
 /***/ }),
 
-/***/ "aaec":
-/***/ (function(module, exports) {
-
-/** Used to compose unicode character classes. */
-var rsAstralRange = '\\ud800-\\udfff',
-    rsComboMarksRange = '\\u0300-\\u036f',
-    reComboHalfMarksRange = '\\ufe20-\\ufe2f',
-    rsComboSymbolsRange = '\\u20d0-\\u20ff',
-    rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange,
-    rsVarRange = '\\ufe0e\\ufe0f';
-
-/** Used to compose unicode capture groups. */
-var rsZWJ = '\\u200d';
-
-/** Used to detect strings with [zero-width joiners or code points from the astral planes](http://eev.ee/blog/2015/09/12/dark-corners-of-unicode/). */
-var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
-
-/**
- * Checks if `string` contains Unicode symbols.
- *
- * @private
- * @param {string} string The string to inspect.
- * @returns {boolean} Returns `true` if a symbol is found, else `false`.
- */
-function hasUnicode(string) {
-  return reHasUnicode.test(string);
-}
-
-module.exports = hasUnicode;
-
-
-/***/ }),
-
 /***/ "ab13":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6435,31 +4877,6 @@ var exec = __webpack_require__("9263");
 $({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
   exec: exec
 });
-
-
-/***/ }),
-
-/***/ "ac41":
-/***/ (function(module, exports) {
-
-/**
- * Converts `set` to an array of its values.
- *
- * @private
- * @param {Object} set The set to convert.
- * @returns {Array} Returns the values.
- */
-function setToArray(set) {
-  var index = -1,
-      result = Array(set.size);
-
-  set.forEach(function(value) {
-    result[++index] = value;
-  });
-  return result;
-}
-
-module.exports = setToArray;
 
 
 /***/ }),
@@ -6544,6 +4961,25 @@ module.exports = {
 
 /***/ }),
 
+/***/ "aed9":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var fails = __webpack_require__("d039");
+
+// V8 ~ Chrome 36-
+// https://bugs.chromium.org/p/v8/issues/detail?id=3334
+module.exports = DESCRIPTORS && fails(function () {
+  // eslint-disable-next-line es/no-object-defineproperty -- required for testing
+  return Object.defineProperty(function () { /* empty */ }, 'prototype', {
+    value: 42,
+    writable: false
+  }).prototype != 42;
+});
+
+
+/***/ }),
+
 /***/ "b041":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6557,27 +4993,6 @@ var classof = __webpack_require__("f5df");
 module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
   return '[object ' + classof(this) + ']';
 };
-
-
-/***/ }),
-
-/***/ "b047":
-/***/ (function(module, exports) {
-
-/**
- * The base implementation of `_.unary` without support for storing metadata.
- *
- * @private
- * @param {Function} func The function to cap arguments for.
- * @returns {Function} Returns the new capped function.
- */
-function baseUnary(func) {
-  return function(value) {
-    return func(value);
-  };
-}
-
-module.exports = baseUnary;
 
 
 /***/ }),
@@ -6610,62 +5025,6 @@ if (DESCRIPTORS && !FUNCTION_NAME_EXISTS) {
     }
   });
 }
-
-
-/***/ }),
-
-/***/ "b218":
-/***/ (function(module, exports) {
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/**
- * Checks if `value` is a valid array-like length.
- *
- * **Note:** This method is loosely based on
- * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
- * @example
- *
- * _.isLength(3);
- * // => true
- *
- * _.isLength(Number.MIN_VALUE);
- * // => false
- *
- * _.isLength(Infinity);
- * // => false
- *
- * _.isLength('3');
- * // => false
- */
-function isLength(value) {
-  return typeof value == 'number' &&
-    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-}
-
-module.exports = isLength;
-
-
-/***/ }),
-
-/***/ "b5a7":
-/***/ (function(module, exports, __webpack_require__) {
-
-var getNative = __webpack_require__("0b07"),
-    root = __webpack_require__("2b3e");
-
-/* Built-in method references that are verified to be native. */
-var DataView = getNative(root, 'DataView');
-
-module.exports = DataView;
 
 
 /***/ }),
@@ -6781,13 +5140,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "b90b":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("2895");
-
-/***/ }),
-
 /***/ "c04e":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6821,38 +5173,6 @@ module.exports = function (input, pref) {
 
 /***/ }),
 
-/***/ "c098":
-/***/ (function(module, exports) {
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/** Used to detect unsigned integer values. */
-var reIsUint = /^(?:0|[1-9]\d*)$/;
-
-/**
- * Checks if `value` is a valid array-like index.
- *
- * @private
- * @param {*} value The value to check.
- * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
- * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
- */
-function isIndex(value, length) {
-  var type = typeof value;
-  length = length == null ? MAX_SAFE_INTEGER : length;
-
-  return !!length &&
-    (type == 'number' ||
-      (type != 'symbol' && reIsUint.test(value))) &&
-        (value > -1 && value % 1 == 0 && value < length);
-}
-
-module.exports = isIndex;
-
-
-/***/ }),
-
 /***/ "c430":
 /***/ (function(module, exports) {
 
@@ -6862,11 +5182,13 @@ module.exports = false;
 /***/ }),
 
 /***/ "c65b":
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+var NATIVE_BIND = __webpack_require__("40d5");
 
 var call = Function.prototype.call;
 
-module.exports = call.bind ? call.bind(call) : function () {
+module.exports = NATIVE_BIND ? call.bind(call) : function () {
   return call.apply(call, arguments);
 };
 
@@ -6906,20 +5228,6 @@ module.exports = store;
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "c869":
-/***/ (function(module, exports, __webpack_require__) {
-
-var getNative = __webpack_require__("0b07"),
-    root = __webpack_require__("2b3e");
-
-/* Built-in method references that are verified to be native. */
-var Set = getNative(root, 'Set');
-
-module.exports = Set;
-
 
 /***/ }),
 
@@ -7075,53 +5383,6 @@ module.exports = function (namespace, method) {
 
 /***/ }),
 
-/***/ "d094":
-/***/ (function(module, exports) {
-
-/** Used to compose unicode character classes. */
-var rsAstralRange = '\\ud800-\\udfff',
-    rsComboMarksRange = '\\u0300-\\u036f',
-    reComboHalfMarksRange = '\\ufe20-\\ufe2f',
-    rsComboSymbolsRange = '\\u20d0-\\u20ff',
-    rsComboRange = rsComboMarksRange + reComboHalfMarksRange + rsComboSymbolsRange,
-    rsVarRange = '\\ufe0e\\ufe0f';
-
-/** Used to compose unicode capture groups. */
-var rsAstral = '[' + rsAstralRange + ']',
-    rsCombo = '[' + rsComboRange + ']',
-    rsFitz = '\\ud83c[\\udffb-\\udfff]',
-    rsModifier = '(?:' + rsCombo + '|' + rsFitz + ')',
-    rsNonAstral = '[^' + rsAstralRange + ']',
-    rsRegional = '(?:\\ud83c[\\udde6-\\uddff]){2}',
-    rsSurrPair = '[\\ud800-\\udbff][\\udc00-\\udfff]',
-    rsZWJ = '\\u200d';
-
-/** Used to compose unicode regexes. */
-var reOptMod = rsModifier + '?',
-    rsOptVar = '[' + rsVarRange + ']?',
-    rsOptJoin = '(?:' + rsZWJ + '(?:' + [rsNonAstral, rsRegional, rsSurrPair].join('|') + ')' + rsOptVar + reOptMod + ')*',
-    rsSeq = rsOptVar + reOptMod + rsOptJoin,
-    rsSymbol = '(?:' + [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') + ')';
-
-/** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */
-var reUnicode = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g');
-
-/**
- * Converts a Unicode `string` to an array.
- *
- * @private
- * @param {string} string The string to convert.
- * @returns {Array} Returns the converted array.
- */
-function unicodeToArray(string) {
-  return string.match(reUnicode) || [];
-}
-
-module.exports = unicodeToArray;
-
-
-/***/ }),
-
 /***/ "d1e7":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7186,49 +5447,6 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
     return O;
   };
 }() : undefined);
-
-
-/***/ }),
-
-/***/ "d370":
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseIsArguments = __webpack_require__("253c"),
-    isObjectLike = __webpack_require__("1310");
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Built-in value references. */
-var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-
-/**
- * Checks if `value` is likely an `arguments` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- *  else `false`.
- * @example
- *
- * _.isArguments(function() { return arguments; }());
- * // => true
- *
- * _.isArguments([1, 2, 3]);
- * // => false
- */
-var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
-  return isObjectLike(value) && hasOwnProperty.call(value, 'callee') &&
-    !propertyIsEnumerable.call(value, 'callee');
-};
-
-module.exports = isArguments;
 
 
 /***/ }),
@@ -7371,19 +5589,6 @@ module.exports = USE_SYMBOL_AS_UID ? function (it) {
 
 /***/ }),
 
-/***/ "da03":
-/***/ (function(module, exports, __webpack_require__) {
-
-var root = __webpack_require__("2b3e");
-
-/** Used to detect overreaching core-js shims. */
-var coreJsData = root['__core-js_shared__'];
-
-module.exports = coreJsData;
-
-
-/***/ }),
-
 /***/ "da84":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7417,39 +5622,6 @@ module.exports = function (V, P) {
   var func = V[P];
   return func == null ? undefined : aCallable(func);
 };
-
-
-/***/ }),
-
-/***/ "dc57":
-/***/ (function(module, exports) {
-
-/** Used for built-in method references. */
-var funcProto = Function.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/**
- * Converts `func` to its source code.
- *
- * @private
- * @param {Function} func The function to convert.
- * @returns {string} Returns the source code.
- */
-function toSource(func) {
-  if (func != null) {
-    try {
-      return funcToString.call(func);
-    } catch (e) {}
-    try {
-      return (func + '');
-    } catch (e) {}
-  }
-  return '';
-}
-
-module.exports = toSource;
 
 
 /***/ }),
@@ -8346,53 +6518,18 @@ if (!IS_PURE && DESCRIPTORS && values.name !== 'values') try {
 
 /***/ }),
 
-/***/ "e2a0":
+/***/ "e330":
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__("3729"),
-    isArray = __webpack_require__("6747"),
-    isObjectLike = __webpack_require__("1310");
-
-/** `Object#toString` result references. */
-var stringTag = '[object String]';
-
-/**
- * Checks if `value` is classified as a `String` primitive or object.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a string, else `false`.
- * @example
- *
- * _.isString('abc');
- * // => true
- *
- * _.isString(1);
- * // => false
- */
-function isString(value) {
-  return typeof value == 'string' ||
-    (!isArray(value) && isObjectLike(value) && baseGetTag(value) == stringTag);
-}
-
-module.exports = isString;
-
-
-/***/ }),
-
-/***/ "e330":
-/***/ (function(module, exports) {
+var NATIVE_BIND = __webpack_require__("40d5");
 
 var FunctionPrototype = Function.prototype;
 var bind = FunctionPrototype.bind;
 var call = FunctionPrototype.call;
-var callBind = bind && bind.bind(call);
+var uncurryThis = NATIVE_BIND && bind.bind(call, call);
 
-module.exports = bind ? function (fn) {
-  return fn && callBind(call, fn);
+module.exports = NATIVE_BIND ? function (fn) {
+  return fn && uncurryThis(fn);
 } : function (fn) {
   return fn && function () {
     return call.apply(fn, arguments);
@@ -8446,100 +6583,6 @@ var classof = __webpack_require__("c6b6");
 module.exports = Array.isArray || function isArray(argument) {
   return classof(argument) == 'Array';
 };
-
-
-/***/ }),
-
-/***/ "eac5":
-/***/ (function(module, exports) {
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Checks if `value` is likely a prototype object.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
- */
-function isPrototype(value) {
-  var Ctor = value && value.constructor,
-      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
-
-  return value === proto;
-}
-
-module.exports = isPrototype;
-
-
-/***/ }),
-
-/***/ "ec69":
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeKeys = __webpack_require__("6fcd"),
-    baseKeys = __webpack_require__("03dd"),
-    isArrayLike = __webpack_require__("30c9");
-
-/**
- * Creates an array of the own enumerable property names of `object`.
- *
- * **Note:** Non-object values are coerced to objects. See the
- * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
- * for more details.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Object
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- *   this.b = 2;
- * }
- *
- * Foo.prototype.c = 3;
- *
- * _.keys(new Foo);
- * // => ['a', 'b'] (iteration order is not guaranteed)
- *
- * _.keys('hi');
- * // => ['0', '1']
- */
-function keys(object) {
-  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
-}
-
-module.exports = keys;
-
-
-/***/ }),
-
-/***/ "edfa":
-/***/ (function(module, exports) {
-
-/**
- * Converts `map` to its key-value pairs.
- *
- * @private
- * @param {Object} map The map to convert.
- * @returns {Array} Returns the key-value pairs.
- */
-function mapToArray(map) {
-  var index = -1,
-      result = Array(map.size);
-
-  map.forEach(function(value, key) {
-    result[++index] = [key, value];
-  });
-  return result;
-}
-
-module.exports = mapToArray;
 
 
 /***/ }),
@@ -8683,9 +6726,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
 var esm_typeof = __webpack_require__("53ca");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/Bar/BarButtonGeneric.vue?vue&type=template&id=46bfa43a
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/Bar/BarButtonGeneric.vue?vue&type=template&id=3b4ace3d
 
-var BarButtonGenericvue_type_template_id_46bfa43a_hoisted_1 = ["title"];
+var BarButtonGenericvue_type_template_id_3b4ace3d_hoisted_1 = ["title"];
 var _hoisted_2 = {
   key: 0,
   class: "material-icons icon"
@@ -8704,7 +6747,7 @@ var _hoisted_6 = {
   class: "material-icons chevron"
 };
 var _hoisted_7 = ["innerHTML"];
-function BarButtonGenericvue_type_template_id_46bfa43a_render(_ctx, _cache, $props, $setup, $data, $options) {
+function BarButtonGenericvue_type_template_id_3b4ace3d_render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", {
     class: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["normalizeClass"])(["bar-button", $options.button_class]),
     title: $options.title,
@@ -8729,13 +6772,12 @@ function BarButtonGenericvue_type_template_id_46bfa43a_render(_ctx, _cache, $pro
     id: $props.item.menu_id,
     width: $props.item.menu_width,
     height: $props.item.menu_height
-  }, null, 8, ["menu", "class", "id", "width", "height"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 42, BarButtonGenericvue_type_template_id_46bfa43a_hoisted_1);
+  }, null, 8, ["menu", "class", "id", "width", "height"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)], 42, BarButtonGenericvue_type_template_id_3b4ace3d_hoisted_1);
 }
-// CONCATENATED MODULE: ./src/Bar/BarButtonGeneric.vue?vue&type=template&id=46bfa43a
+// CONCATENATED MODULE: ./src/Bar/BarButtonGeneric.vue?vue&type=template&id=3b4ace3d
 
-// EXTERNAL MODULE: ./node_modules/node-emoji/index.js
-var node_emoji = __webpack_require__("b90b");
-var node_emoji_default = /*#__PURE__*/__webpack_require__.n(node_emoji);
+// EXTERNAL MODULE: ./node_modules/node-emoji/lib/emoji.json
+var emoji = __webpack_require__("f9ea");
 
 // EXTERNAL MODULE: ./src/Bar/BarMenu.vue + 12 modules
 var BarMenu = __webpack_require__("2670");
@@ -8784,7 +6826,7 @@ var bar_hotkey_manager = __webpack_require__("de35");
   },
   methods: {
     get_emoji: function get_emoji(emoji_name) {
-      return node_emoji_default.a.get(emoji_name);
+      return emoji_name in emoji ? emoji[emoji_name] : "";
     },
     get_component: function get_component(is) {
       if (is && !Array.isArray(is) && Object(esm_typeof["a" /* default */])(is) == "object") return is; // if component
@@ -8804,7 +6846,7 @@ var exportHelper_default = /*#__PURE__*/__webpack_require__.n(exportHelper);
 
 
 
-const __exports__ = /*#__PURE__*/exportHelper_default()(BarButtonGenericvue_type_script_lang_js, [['render',BarButtonGenericvue_type_template_id_46bfa43a_render]])
+const __exports__ = /*#__PURE__*/exportHelper_default()(BarButtonGenericvue_type_script_lang_js, [['render',BarButtonGenericvue_type_template_id_3b4ace3d_render]])
 
 /* harmony default export */ var BarButtonGeneric = (__exports__);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader-v16/dist??ref--1-1!./src/Bar/BarButtonColor.vue?vue&type=template&id=f094c3d0&scoped=true

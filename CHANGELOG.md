@@ -1,3 +1,10 @@
+## v2.0.2
+
+- Bug fix [Issue 16](https://github.com/motla/vue-file-toolbar-menu/issues/16):
+    - Bypassing the `node-emoji` library written in CommonJS. Instead directly accessing JSON file located in `lib` for compatibility with Vite.js
+- Bug fix [Issue 17](https://github.com/motla/vue-file-toolbar-menu/issues/17):
+    - Replacing `::v-deep.bar` by `.bar ::v-deep()` as ::v-deep usage as a combinator has been deprecated
+
 ## v2.0.1
 
 - Prevent displaying "false" as a default title when hovering buttons (Vue3 issue only)

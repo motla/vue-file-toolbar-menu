@@ -1,4 +1,4 @@
-::v-deep.bar {
+.bar ::v-deep() {
   display: flex;
   align-items: stretch;
   justify-content: flex-start;
