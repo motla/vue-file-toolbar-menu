@@ -355,6 +355,7 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 :root {
   --demo-font-color: rgb(74, 238, 164);
 }
@@ -378,7 +379,6 @@ body {
 ::selection {
   background-color: rgba(74, 238, 164, 0.2);
 }
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 </style>
 
 <style scoped>

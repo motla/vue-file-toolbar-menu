@@ -1,3 +1,6 @@
+## v2.0.3
+- Fix v2.0.2 has wrong paths (Bug fix [Issue 16](https://github.com/motla/vue-file-toolbar-menu/issues/16))
+
 ## v2.0.2
 
 - Bug fix [Issue 16](https://github.com/motla/vue-file-toolbar-menu/issues/16):

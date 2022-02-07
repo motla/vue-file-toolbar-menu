@@ -28,7 +28,7 @@
 
 <script>
 import { defineAsyncComponent } from 'vue'
-import emoji from '../../node_modules/node-emoji/lib/emoji.json';
+import emoji from 'node-emoji/lib/emoji.json';
 import hotkey_manager from './imports/bar-hotkey-manager.js'
 
 export default {

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import emoji from '../../node_modules/node-emoji/lib/emoji.json';
+import emoji from 'node-emoji/lib/emoji.json';
 import BarMenu from './BarMenu.vue'
 import hotkey_manager from './imports/bar-hotkey-manager.js'
 
