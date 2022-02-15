@@ -14,6 +14,7 @@
         <option value="mac-os">"macOS"-like style</option>
       </select>
     </div>
+    <!-- v-style component is defined in main.js, and serves to activate/deactivate stylesheets using v-if -->
     <v-style v-if="theme == 'google-docs'">
       body {
         background-color: rgb(248, 249, 250);
