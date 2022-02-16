@@ -1,3 +1,6 @@
+## v2.0.5
+- Bump `@ckpack/vue-color` dependency to its last version to fix part 2 of [Issue 16](https://github.com/motla/vue-file-toolbar-menu/issues/16).
+
 ## v2.0.4
 - Bump `@ckpack/vue-color` dependency to its last version to fix part 2 of [Issue 16](https://github.com/motla/vue-file-toolbar-menu/issues/16).
 

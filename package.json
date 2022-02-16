@@ -1,6 +1,6 @@
 {
   "name": "vue-file-toolbar-menu",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "UI file/toolbar menus for Vue apps",
   "author": {
     "name": "Romain Lamothe",
@@ -36,7 +36,7 @@
   },
   "main": "src/Bar/Bar.vue",
   "dependencies": {
-    "@ckpack/vue-color": "^1.1.6",
+    "@ckpack/vue-color": "^1.1.7",
     "hotkeys-js": "^3.8.2",
     "material-icons": "^1.5.1",
     "node-emoji": "^1.10.0"
