@@ -1,10 +1,19 @@
+## v2.1.0
+
+- SCSS has been converted to basic CSS, so you don't have to install a SCSS compiler anymore
+- Updating dependencies
+- Removing ESLint for a lighter project
+
 ## v2.0.5
+
 - Bump `@ckpack/vue-color` dependency to its last version to fix part 2 of [Issue 16](https://github.com/motla/vue-file-toolbar-menu/issues/16).
 
 ## v2.0.4
+
 - Bump `@ckpack/vue-color` dependency to its last version to fix part 2 of [Issue 16](https://github.com/motla/vue-file-toolbar-menu/issues/16).
 
 ## v2.0.3
+
 - Fix v2.0.2 has wrong paths (Bug fix [Issue 16](https://github.com/motla/vue-file-toolbar-menu/issues/16))
 
 ## v2.0.2
@@ -24,6 +33,16 @@
 - Switching `master` branch to Vue3 (we provide vue2 compatibility on the vue2 branch / @1.x version of this library)
 - Switched `vue-color` to the `@ckpack/vue-color` fork for Vue3 compatibility
 - Dependencies upgrade
+
+## v1.4.1
+
+- Bugfix: CSS scoping issue
+
+## v1.4.0
+
+- SCSS has been converted to basic CSS, so you don't have to install a SCSS compiler anymore
+- Updating dependencies
+- Removing ESLint for a lighter project
 
 ## v1.3.4
 

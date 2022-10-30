@@ -31,8 +31,6 @@ npm install vue-file-toolbar-menu
 npm install vue-file-toolbar-menu@1
 ```
 
-###### :warning: Your Vue.js project must have [`scss`](https://vue-loader.vuejs.org/guide/pre-processors.html#sass) support
-
 ###### :speech_balloon: If you prefer static files, import assets from the `dist` folder
 
 ## Basic example
@@ -73,7 +71,7 @@ Should render this:
 <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/basic-example.png" width="201">
 
 <details>
-<summary><small>same example using static files loaded with a CDN</small></summary>
+<summary><small>same example using static files loaded with a CDN (Vue 3)</small></summary>
 
 ```HTML
 <html>
@@ -114,6 +112,49 @@ Should render this:
 ```
 
 </details>
+<details>
+<summary><small>same example using static files loaded with a CDN (Vue 2)</small></summary>
+
+```HTML
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-file-toolbar-menu@1/dist/VueFileToolbarMenu.umd.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/vue-file-toolbar-menu@1/dist/VueFileToolbarMenu.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <vue-file-toolbar-menu :content="my_menu" />
+  </div>
+  <script>
+  var app = new Vue({
+    el: '#app',
+    components: { VueFileToolbarMenu },
+
+    data () { return { happy: false } },
+
+    computed: {
+      my_menu () {
+        return [
+          { text: "My Menu", menu: [
+            { text: "Item 1", click: () => alert("Action 1") },
+            { text: "Item 2", click: () => alert("Action 2") }
+          ] }, {
+            text: "My Button",
+            active: this.happy,
+            icon: this.happy ? "sentiment_very_satisfied" : "sentiment_satisfied",
+            click: () => { this.happy = !this.happy }
+          }
+        ]
+      }
+    }
+  })
+  </script>
+</body>
+</html>
+```
+
+</details>
 
 ## Complete example
 See the [Demo.vue](src/Demo/Demo.vue) file corresponding to the [live demo](https://motla.github.io/vue-file-toolbar-menu). **:blue_book: Also read the [API](API.md)**.
@@ -122,7 +163,7 @@ See the [Demo.vue](src/Demo/Demo.vue) file corresponding to the [live demo](http
 
 Styling can be done either by writing CSS variables or by overloading CSS properties using [`!important`](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#How_!important_can_be_used).
 
-**:blue_book: Check the CSS variables list and default values in the [default stylesheet](src/Bar/imports/bar-default-styles.scss).**
+**:blue_book: Check the CSS variables list and default values in the [Bar.vue stylesheet](src/Bar/Bar.vue#L70).**
 
 ###### :speech_balloon: If you need some variables that are missing, edit the stylesheet then submit a PR.
 
@@ -213,7 +254,6 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 
 ## Project development
 - `npm run serve` compiles and hot-reloads demo for development
-- `npm run lint` lints and fixes files
 - `npm run build` compiles and minifies production files and demo
 
 ## Dependencies
