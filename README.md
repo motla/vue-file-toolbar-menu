@@ -114,7 +114,7 @@ See the [Demo.vue](src/Demo/Demo.vue) file corresponding to the [live demo](http
 
 Styling can be done either by writing CSS variables or by overloading CSS properties using [`!important`](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#How_!important_can_be_used).
 
-**:blue_book: Check the CSS variables list and default values in the [Bar.vue stylesheet](src/Bar/Bar.vue#L72).**
+**:blue_book: Check the CSS variables list and default values in the [stylesheet](src/Bar/Bar.vue#L72).**
 
 ###### :speech_balloon: If you need some variables that are missing, edit the stylesheet then submit a PR.
 
