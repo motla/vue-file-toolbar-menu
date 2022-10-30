@@ -1,3 +1,7 @@
+## v1.4.1
+
+- Bugfix: CSS scoping issue
+
 ## v1.4.0
 
 - SCSS has been converted to basic CSS, so you don't have to install a SCSS compiler anymore
