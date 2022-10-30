@@ -24,8 +24,6 @@ In your Vue.js project:
 npm install vue-file-toolbar-menu
 ```
 
-###### :warning: Your Vue.js project must have [`scss`](https://vue-loader.vuejs.org/guide/pre-processors.html#sass) support
-
 ###### :speech_balloon: If you prefer static files, import assets from the `dist` folder
 
 ## Basic example
@@ -66,7 +64,7 @@ Should render this:
 <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/basic-example.png">
 
 <details>
-<summary><small>same example using static files loaded with a CDN</small></summary>
+<summary><small>same example using static files loaded with a CDN (Vue 2)</small></summary>
 
 ```HTML
 <html>
@@ -116,7 +114,7 @@ See the [Demo.vue](src/Demo/Demo.vue) file corresponding to the [live demo](http
 
 Styling can be done either by writing CSS variables or by overloading CSS properties using [`!important`](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#How_!important_can_be_used).
 
-**:blue_book: Check the CSS variables list and default values in the [default stylesheet](src/Bar/imports/bar-default-styles.scss).**
+**:blue_book: Check the CSS variables list and default values in the [default stylesheet](src/Bar/imports/bar-default-styles.css).**
 
 ###### :speech_balloon: If you need some variables that are missing, edit the stylesheet then submit a PR.
 
@@ -207,7 +205,6 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 
 ## Project development
 - `npm run serve` compiles and hot-reloads demo for development
-- `npm run lint` lints and fixes files
 - `npm run build` compiles and minifies production files and demo
 
 ## Dependencies

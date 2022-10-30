@@ -1,3 +1,9 @@
+## v1.4.0
+
+- SCSS has been converted to basic CSS, so you don't have to install a SCSS compiler anymore
+- Updating dependencies
+- Removing ESLint for a lighter project
+
 ## v1.3.4
 
 - \[Color button\] Prevent calling `color_update()` callback when the color is changed not from the color palette

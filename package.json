@@ -30,43 +30,20 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --dest docs && vue-cli-service build --target lib --name VueFileToolbarMenu src/Bar/Bar.vue",
-    "lint": "vue-cli-service lint",
-    "preversion": "npm run lint",
     "version": "npm run build && git add -A"
   },
   "main": "src/Bar/Bar.vue",
   "dependencies": {
-    "hotkeys-js": "^3.8.2",
-    "material-icons": "^0.5.3",
-    "node-emoji": "^1.10.0",
+    "hotkeys-js": "^3.10.0",
+    "material-icons": "^1.12.0",
+    "node-emoji": "^1.11.0",
     "vue-color": "^2.8.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.11",
-    "@vue/cli-plugin-eslint": "^4.5.11",
-    "@vue/cli-service": "^4.5.11",
-    "babel-eslint": "^10.1.0",
-    "core-js": "^3.9.1",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "sass": "^1.32.8",
-    "sass-loader": "^8.0.2",
-    "vue": "^2.6.12",
-    "vue-template-compiler": "^2.6.12"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
+    "vue": "^2.7.13",
+    "vue-template-compiler": "^2.7.13"
   },
   "browserslist": [
     "> 1%",
