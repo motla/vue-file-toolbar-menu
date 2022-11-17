@@ -15,7 +15,7 @@ my_menu = [
     text: String, // Text displayed on the button, if any
     html: String, // Raw HTML to display, if any
     title: String, // Text to display in the button tooltip, if any
-    icon: String, // Name of Material icon to display, if any (see https://material.io/resources/icons/)
+    icon: String || Object, // Name of Material icon to display, if any (see https://material.io/resources/icons/), or an icon component (e.g. https://github.com/antfu/unplugin-icons)
     emoji: String, // Name of Emoji to display, if any (from this list: https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json)
     hotkey: String, // Hotkey combination shortcut for the button, if any (use this format: https://github.com/jaywcjlove/hotkeys#supported-keys)
     active: Boolean, // Set to true if the button is toggled
@@ -39,7 +39,7 @@ my_menu = [
         // === item properties ===
         text: String, // Text displayed on the menu item, if any
         html: String, // Raw HTML to display, if any
-        icon: String, // Name of Material icon to display, if any (see https://material.io/resources/icons/)
+        icon: String || Object, // Name of Material icon to display, if any (see https://material.io/resources/icons/), or an icon component (e.g. https://github.com/antfu/unplugin-icons)
         emoji: String, // Name of Emoji to display, if any (from this list: https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json)
         hotkey: String, // Hotkey combination shortcut for the menu, if any (use this format: https://github.com/jaywcjlove/hotkeys#supported-keys)
         disabled: Boolean, // Set to true if the menu is disabled (it will prevent click event)
