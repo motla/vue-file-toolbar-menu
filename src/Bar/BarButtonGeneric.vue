@@ -3,7 +3,10 @@
     @mousedown="(e) => e.preventDefault()"
     @click="(e) => (item.click && !item.disabled) ? item.click(e) : e.stopPropagation()">
     
-    <span v-if="item.icon" class="material-icons icon">{{ item.icon }}</span>
+    <template v-if="item.icon">
+      <component v-if="typeof item.icon == 'object'" class="icon" :is="item.icon"></component>
+      <span v-else class="material-icons icon">{{ item.icon }}</span>
+    </template>
     <span v-if="item.emoji" class="emoji">{{ get_emoji(item.emoji) }}</span>
     <span v-if="item.text" class="label">{{ item.text }}</span>
     <span v-if="item.html" class="label" v-html="item.html"></span>
