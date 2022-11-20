@@ -1,3 +1,9 @@
+# Vue 3
+
+## v2.2.0
+
+- Allow support for using components as icons (for more info see the [API](API.md) and [PR 19](https://github.com/motla/vue-file-toolbar-menu/pull/19))
+
 ## v2.1.0
 
 - SCSS has been converted to basic CSS, so you don't have to install a SCSS compiler anymore
@@ -33,6 +39,12 @@
 - Switching `master` branch to Vue3 (we provide vue2 compatibility on the vue2 branch / @1.x version of this library)
 - Switched `vue-color` to the `@ckpack/vue-color` fork for Vue3 compatibility
 - Dependencies upgrade
+
+# Vue 2
+
+## v1.5.0
+
+- Allow support for using components as icons (for more info see the [API](API.md) and [PR 19](https://github.com/motla/vue-file-toolbar-menu/pull/19))
 
 ## v1.4.1
 

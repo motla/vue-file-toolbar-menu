@@ -210,7 +210,6 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 </details>
 
 - #### macOS-like theme:
-###### :microscope: (CSS backdrop filter is still experimental!)
 <img src="https://github.com/motla/vue-file-toolbar-menu/raw/master/img/macos-theme.png" width="332">
 <details>
 <summary>View specific CSS variables for this theme</summary>
