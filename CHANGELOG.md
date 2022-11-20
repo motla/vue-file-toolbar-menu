@@ -1,3 +1,9 @@
+# Vue 2
+
+## v1.5.0
+
+- Allow support for using components as icons (for more info see the [API](API.md) and [PR 19](https://github.com/motla/vue-file-toolbar-menu/pull/19))
+
 ## v1.4.1
 
 - Bugfix: CSS scoping issue
