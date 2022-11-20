@@ -700,7 +700,7 @@ exports.Z = (sfc, props) => {
 
 /***/ }),
 
-/***/ 234:
+/***/ 600:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 // ESM COMPAT FLAG
@@ -741,11 +741,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 ;// CONCATENATED MODULE: ./src/Bar/BarMenu.vue?vue&type=template&id=0b0941d8
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/Bar/BarMenuItem.vue?vue&type=template&id=759a549e
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/Bar/BarMenuItem.vue?vue&type=template&id=7598ac68
 
-const BarMenuItemvue_type_template_id_759a549e_hoisted_1 = ["title"];
-const BarMenuItemvue_type_template_id_759a549e_hoisted_2 = {
-  key: 0,
+const BarMenuItemvue_type_template_id_7598ac68_hoisted_1 = ["title"];
+const BarMenuItemvue_type_template_id_7598ac68_hoisted_2 = {
+  key: 1,
   class: "material-icons icon"
 };
 const _hoisted_3 = {
@@ -766,7 +766,7 @@ const _hoisted_8 = {
   key: 6,
   class: "material-icons chevron"
 };
-function BarMenuItemvue_type_template_id_759a549e_render(_ctx, _cache, $props, $setup, $data, $options) {
+function BarMenuItemvue_type_template_id_7598ac68_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("div", {
     class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(["bar-menu-item", {
       disabled: $props.item.disabled,
@@ -778,7 +778,12 @@ function BarMenuItemvue_type_template_id_759a549e_render(_ctx, _cache, $props, $
     style: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeStyle)({
       height: $props.item.height + 'px'
     })
-  }, [$props.item.icon ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", BarMenuItemvue_type_template_id_759a549e_hoisted_2, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.item.icon), 1)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.emoji ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", _hoisted_3, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($options.get_emoji($props.item.emoji)), 1)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.text ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", _hoisted_4, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.item.text), 1)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.html ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", {
+  }, [$props.item.icon ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, {
+    key: 0
+  }, [typeof $props.item.icon == 'object' ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveDynamicComponent)($props.item.icon), {
+    key: 0,
+    class: "icon"
+  })) : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", BarMenuItemvue_type_template_id_7598ac68_hoisted_2, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.item.icon), 1))], 64)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.emoji ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", _hoisted_3, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($options.get_emoji($props.item.emoji)), 1)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.text ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", _hoisted_4, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.item.text), 1)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.html ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", {
     key: 3,
     class: "label",
     innerHTML: $props.item.html
@@ -794,9 +799,9 @@ function BarMenuItemvue_type_template_id_759a549e_render(_ctx, _cache, $props, $
     id: $props.item.menu_id,
     width: $props.item.menu_width,
     height: $props.item.menu_height
-  }, null, 8, ["menu", "class", "id", "width", "height"])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)], 46, BarMenuItemvue_type_template_id_759a549e_hoisted_1);
+  }, null, 8, ["menu", "class", "id", "width", "height"])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)], 46, BarMenuItemvue_type_template_id_7598ac68_hoisted_1);
 }
-;// CONCATENATED MODULE: ./src/Bar/BarMenuItem.vue?vue&type=template&id=759a549e
+;// CONCATENATED MODULE: ./src/Bar/BarMenuItem.vue?vue&type=template&id=7598ac68
 
 // EXTERNAL MODULE: ./node_modules/node-emoji/lib/emoji.json
 var emoji = __webpack_require__(964);
@@ -809,7 +814,7 @@ var bar_hotkey_manager = __webpack_require__(584);
 /* harmony default export */ var BarMenuItemvue_type_script_lang_js = ({
   mixins: [bar_hotkey_manager/* default */.Z],
   components: {
-    BarMenu: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineAsyncComponent)(() => Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 234))) // because of circular reference
+    BarMenu: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.defineAsyncComponent)(() => Promise.resolve(/* import() */).then(__webpack_require__.bind(__webpack_require__, 600))) // because of circular reference
   },
 
   props: {
@@ -842,7 +847,7 @@ var exportHelper = __webpack_require__(744);
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,exportHelper/* default */.Z)(BarMenuItemvue_type_script_lang_js, [['render',BarMenuItemvue_type_template_id_759a549e_render]])
+const __exports__ = /*#__PURE__*/(0,exportHelper/* default */.Z)(BarMenuItemvue_type_script_lang_js, [['render',BarMenuItemvue_type_template_id_7598ac68_render]])
 
 /* harmony default export */ var BarMenuItem = (__exports__);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/Bar/BarMenuSeparator.vue?vue&type=template&id=4ba03b66
@@ -1027,11 +1032,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 ;// CONCATENATED MODULE: ./src/Bar/Bar.vue?vue&type=template&id=517fd311&scoped=true
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/Bar/BarButtonGeneric.vue?vue&type=template&id=6fd6b994
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/Bar/BarButtonGeneric.vue?vue&type=template&id=d17fed54
 
-const BarButtonGenericvue_type_template_id_6fd6b994_hoisted_1 = ["title"];
+const BarButtonGenericvue_type_template_id_d17fed54_hoisted_1 = ["title"];
 const _hoisted_2 = {
-  key: 0,
+  key: 1,
   class: "material-icons icon"
 };
 const _hoisted_3 = {
@@ -1048,13 +1053,18 @@ const _hoisted_6 = {
   class: "material-icons chevron"
 };
 const _hoisted_7 = ["innerHTML"];
-function BarButtonGenericvue_type_template_id_6fd6b994_render(_ctx, _cache, $props, $setup, $data, $options) {
+function BarButtonGenericvue_type_template_id_d17fed54_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("div", {
     class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(["bar-button", $options.button_class]),
     title: $options.title,
     onMousedown: _cache[0] || (_cache[0] = e => e.preventDefault()),
     onClick: _cache[1] || (_cache[1] = e => $props.item.click && !$props.item.disabled ? $props.item.click(e) : e.stopPropagation())
-  }, [$props.item.icon ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", _hoisted_2, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.item.icon), 1)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.emoji ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", _hoisted_3, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($options.get_emoji($props.item.emoji)), 1)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.text ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", _hoisted_4, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.item.text), 1)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.html ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", {
+  }, [$props.item.icon ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)(external_commonjs_vue_commonjs2_vue_root_Vue_.Fragment, {
+    key: 0
+  }, [typeof $props.item.icon == 'object' ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createBlock)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.resolveDynamicComponent)($props.item.icon), {
+    key: 0,
+    class: "icon"
+  })) : ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", _hoisted_2, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.item.icon), 1))], 64)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.emoji ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", _hoisted_3, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($options.get_emoji($props.item.emoji)), 1)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.text ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", _hoisted_4, (0,external_commonjs_vue_commonjs2_vue_root_Vue_.toDisplayString)($props.item.text), 1)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true), $props.item.html ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", {
     key: 3,
     class: "label",
     innerHTML: $props.item.html
@@ -1069,14 +1079,14 @@ function BarButtonGenericvue_type_template_id_6fd6b994_render(_ctx, _cache, $pro
     id: $props.item.menu_id,
     width: $props.item.menu_width,
     height: $props.item.menu_height
-  }, null, 8, ["menu", "class", "id", "width", "height"])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)], 42, BarButtonGenericvue_type_template_id_6fd6b994_hoisted_1);
+  }, null, 8, ["menu", "class", "id", "width", "height"])) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)], 42, BarButtonGenericvue_type_template_id_d17fed54_hoisted_1);
 }
-;// CONCATENATED MODULE: ./src/Bar/BarButtonGeneric.vue?vue&type=template&id=6fd6b994
+;// CONCATENATED MODULE: ./src/Bar/BarButtonGeneric.vue?vue&type=template&id=d17fed54
 
 // EXTERNAL MODULE: ./node_modules/node-emoji/lib/emoji.json
 var emoji = __webpack_require__(964);
 // EXTERNAL MODULE: ./src/Bar/BarMenu.vue + 12 modules
-var BarMenu = __webpack_require__(234);
+var BarMenu = __webpack_require__(600);
 // EXTERNAL MODULE: ./src/Bar/imports/bar-hotkey-manager.js + 1 modules
 var bar_hotkey_manager = __webpack_require__(584);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/Bar/BarButtonGeneric.vue?vue&type=script&lang=js
@@ -1135,7 +1145,7 @@ var exportHelper = __webpack_require__(744);
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,exportHelper/* default */.Z)(BarButtonGenericvue_type_script_lang_js, [['render',BarButtonGenericvue_type_template_id_6fd6b994_render]])
+const __exports__ = /*#__PURE__*/(0,exportHelper/* default */.Z)(BarButtonGenericvue_type_script_lang_js, [['render',BarButtonGenericvue_type_template_id_d17fed54_render]])
 
 /* harmony default export */ var BarButtonGeneric = (__exports__);
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/Bar/BarButtonColor.vue?vue&type=template&id=f094c3d0&scoped=true
