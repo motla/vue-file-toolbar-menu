@@ -13,7 +13,7 @@
 - Uses standard [Material Icons](https://material.io/resources/icons/)
 - Hotkey support
 - Touch-device compatible
-- Easy multi-language implementation ([vue-i18n](https://github.com/kazupon/vue-i18n))
+- Easy multi-language implementation ([vue-i18n](https://github.com/intlify/vue-i18n-next))
 - Migrated to Vue.js 3.x (to use with Vue 2.x, select library version 1.x)
 
 ###### :speech_balloon: If you plan to build a document editor, also check out [vue-document-editor](https://github.com/motla/vue-document-editor)
