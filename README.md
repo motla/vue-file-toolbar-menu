@@ -252,7 +252,7 @@ Styling can be done either by writing CSS variables or by overloading CSS proper
 </details>
 
 ## Project development
-- `npm run serve` compiles and hot-reloads demo for development
+- `npm run serve` compiles, serves and hot-reloads demo for development
 - `npm run build` compiles and minifies production files and demo
 
 ## Dependencies
